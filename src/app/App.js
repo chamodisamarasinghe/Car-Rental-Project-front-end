@@ -1,19 +1,20 @@
-import logo from '../logo.svg';
+import React from "react";
 import '../App.css';
 import {Routes, Route} from "react-router-dom";
-
+import DashBoard from "../pages/DashBoard";
+import Customer from "../pages/Customer"
 
 function App() {
   return (
       <Routes>
-        <Route exact path='/' element={<HomePage/>}/>
-        <Route exact path='posts' element={<Posts/>}/>
-        <Route path='login' element={<Login/>}/>
-        <Route path='flex-layout' element={<FlexBoxLayout/>}/>
-        <Route path='grid-layout' element={<GridLayout/>}/>
-        <Route path="*" element={<NotFound/>}/>
+        {/*<Route exact path='/' element={<HomePage/>}/>*/}
+        {/*<Route exact path='posts' element={<Posts/>}/>*/}
+        {/*<Route path='login' element={<Login/>}/>*/}
+        {/*<Route path='flex-layout' element={<FlexBoxLayout/>}/>*/}
+        {/*<Route path='grid-layout' element={<GridLayout/>}/>*/}
+        {/*<Route path="*" element={<NotFound/>}/>*/}
         <Route path="customer" element={<Customer/>}/>
-        <Route path="item" element={<Item/>}/>
+        {/*<Route path="item" element={<Item/>}/>*/}
         <Route exact path='/' element={<DashBoard/>}/>
       </Routes>
 
