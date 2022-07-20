@@ -1,24 +1,16 @@
 import React from "react";
-import '../App.css';
+import Login from "../pages/sessions/Login";
 import {Routes, Route} from "react-router-dom";
-import DashBoard from "../pages/DashBoard";
-import Customer from "../pages/Customer"
+import DashBoard from "../pages/sessions/DashBoard";
+import Customer from "../pages/sessions/Customer"
 
 function App() {
-  return (
-      <Routes>
-        {/*<Route exact path='/' element={<HomePage/>}/>*/}
-        {/*<Route exact path='posts' element={<Posts/>}/>*/}
-        {/*<Route path='login' element={<Login/>}/>*/}
-        {/*<Route path='flex-layout' element={<FlexBoxLayout/>}/>*/}
-        {/*<Route path='grid-layout' element={<GridLayout/>}/>*/}
-        {/*<Route path="*" element={<NotFound/>}/>*/}
-        <Route path="customer" element={<Customer/>}/>
-        {/*<Route path="item" element={<Item/>}/>*/}
-        <Route exact path='/' element={<DashBoard/>}/>
-      </Routes>
-
-  );
+    return (
+        <Routes>
+            <Route exact path='/' element={<DashBoard/>}/>
+            <Route path="customer" element={<Customer/>}/>
+        </Routes>
+    );
 }
 
 export default App;
