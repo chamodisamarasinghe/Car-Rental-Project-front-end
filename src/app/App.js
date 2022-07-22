@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "../pages/sessions/Login";
 import {Routes, Route} from "react-router-dom";
-import DashBoard from "../components/DashBoard";
+import DashBoard from "../pages/sessions/DashBoard";
 import Customer from "../pages/sessions/Customer"
 import AddVehicle from "../pages/sessions/AddVehicle"
 import Sidebar from "../components/Sidebar"
