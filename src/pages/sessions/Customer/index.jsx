@@ -17,6 +17,8 @@ import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import {Link} from "react-router-dom";
+import NavBar from "../../../components/common/NavBar";
 
 
 class Customer extends Component {
@@ -172,21 +174,28 @@ class Customer extends Component {
             <>
 
                 <ValidatorForm  ref="form" className="pt-2" onSubmit={this.submitCustomer} >
+                    <Grid >
+                    <div style={{color:"red"}}>
+                        <Link to="/" style={{position:'absolute', left:1100, top:50, textDecoration:"none" ,color:'black', fontWeight:"bold" }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
+                        <Link to="customer" style={{position:'absolute', left:1200, top:50, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
+                        <Link to="item" style={{position:'absolute', left:1300, top:50, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Item' wrapped={false} /></Link>
+                    </div>
+                 </Grid>
 
                     <Grid>
-                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:380, left:100, position:"absolute"}}>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:450, left:100, position:"absolute"}}>
                             <Button>NIC Front image</Button>
                         </Box>
                     </Grid>
 
                     <Grid>
-                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:380, left:300, position:"absolute"}}>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:450, left:300, position:"absolute"}}>
                             <Button>NIC Back image</Button>
                         </Box>
                     </Grid>
 
                     <Grid>
-                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:380, left:500, position:"absolute"}}>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:450, left:500, position:"absolute"}}>
                             <Button>License image</Button>
                         </Box>
                     </Grid>
@@ -194,18 +203,18 @@ class Customer extends Component {
 
                     <Grid container className="pt-2" spacing={3}>
                         <Grid item lg={12} xs={12} sm={12} md={12}>
-                            <Typography variant="h2" style={{marginLeft:320, color:"#00008B", fontWeight:"bold"}}>Customer Manage</Typography>
+                            <Typography variant="h3" style={{marginLeft:320, color:"#00008B", fontWeight:"bold"}}>Customer Manage</Typography>
                         </Grid>
 
 
                         <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography variant="subtitle1" >Customer Id</Typography>
+                            <Typography style={{top:145, left:65, position:"absolute"}} variant="subtitle1"  >Customer Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Customer Id"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%'  }}
+                                style={{ width: '90%', left:50 ,top:100}}
                                 value={this.state.formData.id}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -218,13 +227,13 @@ class Customer extends Component {
 
 
                         <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography variant="subtitle1" >Customer Name</Typography>
+                            <Typography style={{top:145, left:820, position:"absolute"}} variant="subtitle1" >Customer Name</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Customer Name"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%' }}
+                                style={{ width: '90%', left:50 ,top:100}}
                                 value={this.state.formData.name}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -235,13 +244,13 @@ class Customer extends Component {
                             />
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography variant="subtitle1" >Customer Address</Typography>
+                            <Typography style={{top:230, left:65, position:"absolute"}} variant="subtitle1" >Customer Address</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Customer Address"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%' }}
+                                style={{ width: '90%', left:50 ,top:120}}
                                 value={this.state.formData.address}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -252,13 +261,13 @@ class Customer extends Component {
                             />
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography variant="subtitle1" >Contact No</Typography>
+                            <Typography style={{top:230, left:820, position:"absolute"}} variant="subtitle1" >Contact No</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Contact No"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%' }}
+                                style={{ width: '90%', left:50 ,top:120}}
                                 value={this.state.formData.contactNo}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -269,14 +278,14 @@ class Customer extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography variant="subtitle1" >Email</Typography>
+                        <Grid  item xs={12} sm={12} md={6} lg={6} >
+                            <Typography style={{top:320, left:65, position:"absolute"}} variant="subtitle1" >Email</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Email"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%' }}
+                                style={{ width: '90%', left:50 ,top:150}}
                                 value={this.state.formData.email}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -288,13 +297,13 @@ class Customer extends Component {
                         </Grid>
 
                         <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography variant="subtitle1" >NIC</Typography>
+                            <Typography style={{top:320, left:820, position:"absolute"}} variant="subtitle1" >NIC</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="NIC"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%' }}
+                                style={{ width: '90%', left:50 ,top:150}}
                                 value={this.state.formData.nic}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -306,12 +315,12 @@ class Customer extends Component {
                         </Grid>
 
 
-                        <Grid container style={{ marginTop: '10px' }} direction="row" justifyContent="flex-end" alignItems="center">
-                            <GDSEButton label={this.state.btnLabel} type="submit" size="small" color={this.state.btnColor} variant="contained"/>
+                        <Grid container style={{ marginTop: '200px', left:200 }} direction="row" justifyContent="flex-end" alignItems="center">
+                            <GDSEButton label={this.state.btnLabel} type="submit" size="large" color={this.state.btnColor} variant="contained"/>
                         </Grid>
                     </Grid>
                 </ValidatorForm>
-                <Grid contaner style={{ marginTop: '95px' }}>
+                <Grid contaner style={{ marginTop: '100px' }}>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="customer table">
                             <TableHead>
