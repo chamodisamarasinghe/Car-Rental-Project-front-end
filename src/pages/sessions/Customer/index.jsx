@@ -15,6 +15,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
 
 class Customer extends Component {
     constructor(props) {
@@ -24,7 +27,9 @@ class Customer extends Component {
                 id: '',
                 name: '',
                 address: '',
-                salary: ''
+                contactNo: '',
+                email: '',
+                nic: ''
             },
             alert: false,
             message: '',
@@ -161,21 +166,46 @@ class Customer extends Component {
 
     render() {
         return (
+
             // <Fragment>
+            // <Grid style={{backgroundImage: "url(" + Background + ")"}}>
             <>
-                <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitCustomer} >
+
+                <ValidatorForm  ref="form" className="pt-2" onSubmit={this.submitCustomer} >
+
+                    <Grid>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:380, left:100, position:"absolute"}}>
+                            <Button>NIC Front image</Button>
+                        </Box>
+                    </Grid>
+
+                    <Grid>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:380, left:300, position:"absolute"}}>
+                            <Button>NIC Back image</Button>
+                        </Box>
+                    </Grid>
+
+                    <Grid>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:380, left:500, position:"absolute"}}>
+                            <Button>License image</Button>
+                        </Box>
+                    </Grid>
+
+
                     <Grid container className="pt-2" spacing={3}>
                         <Grid item lg={12} xs={12} sm={12} md={12}>
-                            <Typography variant="h2">Customer Manage</Typography>
+                            <Typography variant="h2" style={{marginLeft:320, color:"#00008B", fontWeight:"bold"}}>Customer Manage</Typography>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Customer Id</Typography>
+
+
+                        <Grid item xs={12} sm={12} md={6} lg={6} >
+                            <Typography variant="subtitle1" >Customer Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Customer Id"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '100%' }}
+                                style={{ width: '100%'  }}
                                 value={this.state.formData.id}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -185,8 +215,10 @@ class Customer extends Component {
                                 validators={['required']}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Customer Name</Typography>
+
+
+                        <Grid item xs={12} sm={12} md={6} lg={6} >
+                            <Typography variant="subtitle1" >Customer Name</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Customer Name"
@@ -202,8 +234,8 @@ class Customer extends Component {
                                 validators={['required']}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Customer Address</Typography>
+                        <Grid item xs={12} sm={12} md={6} lg={6} >
+                            <Typography variant="subtitle1" >Customer Address</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Customer Address"
@@ -219,8 +251,8 @@ class Customer extends Component {
                                 validators={['required']}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Contact No</Typography>
+                        <Grid item xs={12} sm={12} md={6} lg={6} >
+                            <Typography variant="subtitle1" >Contact No</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Contact No"
@@ -237,8 +269,8 @@ class Customer extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Email</Typography>
+                        <Grid item xs={12} sm={12} md={6} lg={6} >
+                            <Typography variant="subtitle1" >Email</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Email"
@@ -255,8 +287,8 @@ class Customer extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">NIC</Typography>
+                        <Grid item xs={12} sm={12} md={6} lg={6} >
+                            <Typography variant="subtitle1" >NIC</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="NIC"
@@ -279,7 +311,7 @@ class Customer extends Component {
                         </Grid>
                     </Grid>
                 </ValidatorForm>
-                <Grid contaner style={{ marginTop: '15px' }}>
+                <Grid contaner style={{ marginTop: '95px' }}>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="customer table">
                             <TableHead>
@@ -342,6 +374,7 @@ class Customer extends Component {
                     variant="filled"
                 />
             </>
+            // </Grid>
             // </Fragment>
         );
     }
