@@ -72,6 +72,23 @@ class Home extends Component {
                 </Grid>
 
 
+
+
+
+
+
+                <Grid>
+                    <Button variant="contained" color="primary" style={{left:1300, position:"absolute", top:60}}>
+                        Sign up
+                    </Button>
+                </Grid>
+
+
+                <Grid>
+                    <Button variant="contained" color="primary" style={{left:1400, position:"absolute", top:60}}>
+                        Log in
+                    </Button>
+                </Grid>
             </Fragment>
         )
     }
