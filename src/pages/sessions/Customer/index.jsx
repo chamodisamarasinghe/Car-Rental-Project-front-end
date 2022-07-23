@@ -176,9 +176,9 @@ class Customer extends Component {
                 <ValidatorForm  ref="form" className="pt-2" onSubmit={this.submitCustomer} >
                     <Grid >
                     <div style={{color:"red"}}>
-                        <Link to="/" style={{position:'absolute', left:1100, top:50, textDecoration:"none" ,color:'black', fontWeight:"bold" }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
-                        <Link to="customer" style={{position:'absolute', left:1200, top:50, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
-                        <Link to="item" style={{position:'absolute', left:1300, top:50, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Item' wrapped={false} /></Link>
+                        <Link to="/" style={{position:'absolute', left:1100, top:20, textDecoration:"none" ,color:'black', fontWeight:"bold" }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
+                        <Link to="customer" style={{position:'absolute', left:1200, top:20, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
+                        <Link to="item" style={{position:'absolute', left:1300, top:20, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Item' wrapped={false} /></Link>
                     </div>
                  </Grid>
 
@@ -203,7 +203,7 @@ class Customer extends Component {
 
                     <Grid container className="pt-2" spacing={3}>
                         <Grid item lg={12} xs={12} sm={12} md={12}>
-                            <Typography variant="h3" style={{marginLeft:320, color:"#00008B", fontWeight:"bold"}}>Customer Manage</Typography>
+                            <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Customer Manage</Typography>
                         </Grid>
 
 
