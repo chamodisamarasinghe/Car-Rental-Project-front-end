@@ -9,7 +9,7 @@ import Sidebar from "../components/Sidebar"
 import SignUp from "../pages/sessions/SignUp"
 import About from "../pages/sessions/About";
 import Home from "../pages/sessions/Home";
-import Test from "../pages/sessions/Test";
+
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route path="about" element={<About/>}/>
             <Route path="sidebar" element={<Sidebar/>}/>
             <Route path="signup" element={<SignUp/>}/>
-            <Route path="test" element={<Test/>}/>
+
         </Routes>
     );
 }
