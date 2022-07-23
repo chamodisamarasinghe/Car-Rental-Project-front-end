@@ -9,19 +9,23 @@ import Sidebar from "../components/Sidebar"
 import SignUp from "../pages/sessions/SignUp"
 import About from "../pages/sessions/About";
 import Home from "../pages/sessions/Home";
+import Test from "../pages/sessions/Test";
+
 
 function App() {
     return (
 
         <Routes>
-            <Route exact path='/' element={<DashBoard/>}/>
+            <Route exact path='/' element={<Home/>}/>
+            <Route path="dashboard" element={<DashBoard/>}/>
+            <Route path="login" element={<Login/>}/>
             <Route path="customer" element={<Customer/>}/>
             <Route path="addcar" element={<AddCar/>}/>
             <Route path="addVehicle" element={<About/>}/>
             <Route path="about" element={<About/>}/>
-            <Route path="home" element={<Home/>}/>
             <Route path="sidebar" element={<Sidebar/>}/>
             <Route path="signup" element={<SignUp/>}/>
+            <Route path="test" element={<Test/>}/>
         </Routes>
     );
 }

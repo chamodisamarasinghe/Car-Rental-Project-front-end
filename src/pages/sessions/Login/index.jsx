@@ -53,7 +53,7 @@ class Login extends Component {
             <div className={classes.container}>
                 <div className={classes.login__cover}>
                     <div className={classes.title__container}>
-                        <Typography variant="h4">Login</Typography>
+                        <Typography variant="h4" style={{ fontFamily: "Times New Roman", fontWeight:"bold"}}>Login</Typography>
                     </div>
                     <div className={classes.form__container}>
                         <TextField
