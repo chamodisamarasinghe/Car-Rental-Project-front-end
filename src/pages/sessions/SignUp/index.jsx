@@ -56,7 +56,7 @@ class SignUp extends Component {
                 <div className={classes.login__cover}>
                     <div className={classes.title__container}>
                         <img src={sign} style={{position:"absolute", top:100, left:710,width:90,height:90}}/>
-                        <Typography variant="h4" style={{ fontFamily: "Times New Roman", fontWeight:"bold",position:"absolute",top:22,left:700}}>Sign up</Typography>
+                        <Typography variant="h4" style={{ fontFamily: "Times New Roman", fontWeight:"bold",position:"absolute",top:22,left:700,color:"#00008B"}}>Sign up</Typography>
                     </div>
                     <div className={classes.form__container}>
                         <TextField
