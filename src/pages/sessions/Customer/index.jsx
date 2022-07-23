@@ -183,19 +183,19 @@ class Customer extends Component {
                  </Grid>
 
                     <Grid>
-                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:450, left:100, position:"absolute"}}>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed black', width:70, height:60, top:450, left:100, position:"absolute"}}>
                             <Button>NIC Front image</Button>
                         </Box>
                     </Grid>
 
                     <Grid>
-                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:450, left:300, position:"absolute"}}>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed black', width:70, height:60, top:450, left:300, position:"absolute"}}>
                             <Button>NIC Back image</Button>
                         </Box>
                     </Grid>
 
                     <Grid>
-                        <Box component="span" sx={{ p: 2, border: '5px dashed grey', width:70, height:60, top:450, left:500, position:"absolute"}}>
+                        <Box component="span" sx={{ p: 2, border: '5px dashed black', width:70, height:60, top:450, left:500, position:"absolute"}}>
                             <Button>License image</Button>
                         </Box>
                     </Grid>
