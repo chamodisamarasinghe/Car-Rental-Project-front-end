@@ -7,9 +7,11 @@ import AddVehicle from "../pages/sessions/AddVehicle"
 import AddCar from "../pages/sessions/AddCar"
 import Sidebar from "../components/Sidebar"
 import SignUp from "../pages/sessions/SignUp"
-import About from "../pages/sessions/About";
-import Home from "../pages/sessions/Home";
 
+import Home from "../pages/sessions/Home";
+import Card from "../pages/sessions/Card";
+import Driver from "../pages/sessions/Driver";
+import AboutCars from "../pages/sessions/About Cars";
 
 
 function App() {
@@ -20,9 +22,11 @@ function App() {
             <Route path="dashboard" element={<DashBoard/>}/>
             <Route path="login" element={<Login/>}/>
             <Route path="customer" element={<Customer/>}/>
+            <Route path="driver" element={<Driver/>}/>
+            <Route path="card" element={<Card/>}/>
             <Route path="addcar" element={<AddCar/>}/>
-            <Route path="addVehicle" element={<About/>}/>
-            <Route path="about" element={<About/>}/>
+            {/*<Route path="addVehicle" element={<About/>}/>*/}
+            <Route path="about" element={<AboutCars/>}/>
             <Route path="sidebar" element={<Sidebar/>}/>
             <Route path="signup" element={<SignUp/>}/>
 
