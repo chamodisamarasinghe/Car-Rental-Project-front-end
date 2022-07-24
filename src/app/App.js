@@ -7,11 +7,12 @@ import AddVehicle from "../pages/sessions/AddVehicle"
 import AddCar from "../pages/sessions/AddCar"
 import Sidebar from "../components/Sidebar"
 import SignUp from "../pages/sessions/SignUp"
-
+import DriverDetails from "../pages/sessions/Driver Details"
 import Home from "../pages/sessions/Home";
 import Card from "../pages/sessions/Card";
 import Driver from "../pages/sessions/Driver";
 import AboutCars from "../pages/sessions/About Cars";
+import Test from "../pages/sessions/Test";
 
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
             <Route path="about" element={<AboutCars/>}/>
             <Route path="sidebar" element={<Sidebar/>}/>
             <Route path="signup" element={<SignUp/>}/>
+            <Route path="details" element={<DriverDetails/>}/>
 
+            <Route path="test" element={<Test/>}/>
         </Routes>
     );
 }
