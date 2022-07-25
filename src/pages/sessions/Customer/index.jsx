@@ -175,12 +175,13 @@ class Customer extends Component {
 
                 <ValidatorForm  ref="form" className="pt-2" onSubmit={this.submitCustomer} >
                     <Grid >
-                    <div style={{color:"red"}}>
-                        <Link to="/" style={{position:'absolute', left:1000, top:20, textDecoration:"none" ,color:'black', fontWeight:"bold" }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
-                        <Link to="about" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black',top:20 }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About us' wrapped={false} /></Link>
-                        <Link to="customer" style={{position:'absolute', left:1200, top:20, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
-                        <Link to="driver" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black',top:20 }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>
-                    </div>
+                        <div>
+                            <Link to="/" style={{position:'absolute', left:900, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
+                            <Link to="aboutus" style={{position:'absolute', left:1000, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About Us' wrapped={false} /></Link>
+                            <Link to="test" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Cars' wrapped={false} /></Link>
+                            <Link to="customer" style={{position:'absolute', left:1200, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
+                            <Link to="driver" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>
+                        </div>
                  </Grid>
 
                     <Grid>
