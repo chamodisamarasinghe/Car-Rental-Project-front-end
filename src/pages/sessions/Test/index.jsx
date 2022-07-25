@@ -18,11 +18,13 @@ import Card from "@material-ui/core/Card";
 const Alto2 = new URL("../../../assets/Alto2.jpg",import.meta.url)
 const axia = new URL("../../../assets/axia.png",import.meta.url)
 const aqua = new URL("../../../assets/aqua.jpg",import.meta.url)
-const corolla = new URL("../../../assets/corolla.jpg",import.meta.url)
+const red = new URL("../../../assets/red.jpg",import.meta.url)
 const bezza = new URL("../../../assets/bezza.jpg",import.meta.url)
 const allion = new URL("../../../assets/allion.jpg",import.meta.url)
 const premio = new URL("../../../assets/premio.jpg",import.meta.url)
+const corolla = new URL("../../../assets/corolla.jpg",import.meta.url)
 const bm = new URL("../../../assets/bm.jpg",import.meta.url)
+const ax = new URL("../../../assets/ax.jpg",import.meta.url)
 class Test extends Component {
     constructor(props) {
         super(props);
@@ -43,8 +45,17 @@ class Test extends Component {
                 </Grid>
 
 
+                <Grid  item lg={12} xs={12} sm={12} md={12}>
+                    <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>General Cars</Typography>
+                </Grid>
+
                 <Grid item lg={12} xs={12} sm={12} md={12}>
-                    <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Car Details</Typography>
+                    <Typography variant="h3" style={{marginLeft:520, marginTop:500, color:"#00008B", fontWeight:"bold", fontSize:40}}>Premium Cars</Typography>
+                </Grid>
+
+
+                <Grid item lg={12} xs={12} sm={12} md={12}>
+                    <Typography variant="h3" style={{marginLeft:520, marginTop:460, color:"#00008B", fontWeight:"bold", fontSize:40}}>Luxury Cars</Typography>
                 </Grid>
 
 
@@ -143,10 +154,11 @@ class Test extends Component {
                     <Box component="span" sx={{backgroundColor:"#000000", p: 2, border: '5px dashed white', width:250, height:400, top:600, left:800, position:"absolute"}}>
                     </Box>
 
-                    <img src={premio} style={{position:"absolute", top:680, left:820,height:250,width:250}}/>
+                    <img src={corolla} style={{position:"absolute", top:680, left:820,height:250,width:250}}/>
 
 
-                    <h1 style={{position:"absolute",top:630,left:880,color:"white",fontSize:15}}>Toyota Premio * 2 </h1>
+                    <h1 style={{position:"absolute",top:630,left:820,color:"white",fontSize:15}}>Toyota Corolla Axio/NZE141 * 4
+                    </h1>
 
                     <Button style={{position:"absolute",top:970, left:890}} variant="contained" color="error">
                         View more
@@ -170,10 +182,10 @@ class Test extends Component {
                     <Box component="span" sx={{backgroundColor:"#000000", p: 2, border: '5px dashed white', width:250, height:400, top:120, left:1170, position:"absolute"}}>
                     </Box>
 
-                    <img src={corolla} style={{position:"absolute", top:200, left:1190,height:250,width:250}}/>
+                    <img src={red} style={{position:"absolute", top:200, left:1190,height:250,width:250}}/>
 
 
-                    <h1 style={{position:"absolute",top:140,left:1200,color:"white",fontSize:15}}>Toyota Corolla Axio/ NZE141 * 4</h1>
+                    <h1 style={{position:"absolute",top:140,left:1200,color:"white",fontSize:15}}>Suzuki Celerio - Auto * 5</h1>
 
                     <Button style={{position:"absolute",top:500, left:1280}} variant="contained" color="error">
                         View more
@@ -186,15 +198,61 @@ class Test extends Component {
                     <Box component="span" sx={{backgroundColor:"#000000", p: 2, border: '5px dashed white', width:250, height:400, top:600, left:1170, position:"absolute"}}>
                     </Box>
 
-                    <img src={bm} style={{position:"absolute", top:680, left:1190,height:250,width:250}}/>
+                    <img src={ax} style={{position:"absolute", top:680, left:1190,height:250,width:250}}/>
 
 
-                    <h1 style={{position:"absolute",top:630,left:1220,color:"white",fontSize:15}}>Mercedes*2 BMW i8*2</h1>
+                    <h1 style={{position:"absolute",top:630,left:1220,color:"white",fontSize:15}}>Toyota Axio NKR 165 * 2</h1>
 
                     <Button style={{position:"absolute",top:970, left:1280}} variant="contained" color="error">
                         View more
                     </Button>
                 </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <Grid>
+                    <Box component="span" sx={{backgroundColor:"#000000", p: 2, border: '5px dashed white', width:250, height:400, top:1150, left:20, position:"absolute"}}>
+                    </Box>
+
+                    <img src={bm} style={{position:"absolute", top:1250, left:40,height:250,width:250}}/>
+
+                    <h1 style={{position:"absolute",top:1200,left:50,color:"white",fontSize:15}}>Mercedes * 2 BMW i8 * 2</h1>
+                    <Button style={{position:"absolute",top:1540, left:100}} variant="contained" color="error">
+                        View more
+                    </Button>
+
+                </Grid>
+
+
+
+                <Grid>
+                    <Box component="span" sx={{backgroundColor:"#000000", p: 2, border: '5px dashed white', width:250, height:400, top:1150, left:400, position:"absolute"}}>
+                    </Box>
+                    <img src={premio} style={{position:"absolute", top:1250, left:422,height:250,width:250}}/>
+
+
+                    <h1 style={{position:"absolute",top:1200,left:450,color:"white",fontSize:15}}>Toyota Premio * 2</h1>
+
+                    <Button style={{position:"absolute",top:1540, left:480}} variant="contained" color="error">
+                        View more
+                    </Button>
+                </Grid>
+
+
+
+
+
 
 
             </Fragment>
