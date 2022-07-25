@@ -18,6 +18,7 @@ import AdminDashBoard from "../pages/sessions/AdminDashBoard";
 import CustomerLogin from "../pages/sessions/CustomerLogin";
 import DriverLogin from "../pages/sessions/DriverLogin";
 import AdminLogin from "../pages/sessions/AdminLogin";
+import CustomerDashBoard from "../pages/sessions/CustomerDashBoard";
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="aboutus" element={<AboutUs/>}/>
             <Route path="test" element={<Test/>}/>
             <Route path="admindashboard" element={<AdminDashBoard/>}/>
+            <Route path="customerdashboard" element={<CustomerDashBoard/>}/>
             <Route path="customerlogin" element={<CustomerLogin/>}/>
             <Route path="driverlogin" element={<DriverLogin/>}/>
             <Route path="adminlogin" element={<AdminLogin/>}/>
