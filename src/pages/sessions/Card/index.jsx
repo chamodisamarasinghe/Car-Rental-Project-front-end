@@ -1,116 +1,102 @@
-import * as React from 'react';
-import {styled} from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import {red} from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import car2 from '../../../assets/car2.jpg';
-import Grid from "@material-ui/core/Grid";
-import {Link} from "react-router-dom";
-import NavBar from "../../../components/common/NavBar";
-import {Fragment} from "react";
+import React from "react";
+import Button from "@material-ui/core/Button";
+import MobileStepper from "@material-ui/core/MobileStepper";
+import Paper from "@material-ui/core/Paper";
+import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import Typography from "@material-ui/core/Typography";
+import { useTheme } from "@material-ui/core/styles";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import car from "../../../assets/car.jpg"
 
-const ExpandMore = styled((props) => {
-    const {expand, ...other} = props;
-    return <IconButton {...other} />;
-})(({theme, expand}) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }),
-}));
+const MyCollection = [
+    {
+        label: "First Picture",
+        image:{car},
+    },
+    {
+        label: "Second Picture",
+        imgPath:
+            "https://www.forbes.com/sites/jimgorzelany/2019/07/23/here-are-the-coolest-new-cars-for-2020/",
+    },
+    {
+        label: "Third Picture",
+        imgPath:
+            "https://media.geeksforgeeks.org/wp-content/uploads/20210208000008/3.png",
+    },
+];
 
 
-const Car = ({}) => {
-    const [expanded, setExpanded] = React.useState(false);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
+
+const App = () => {
+    const CollectionSize = MyCollection.length;
+    const theme = useTheme();
+    const [index, setActiveStep] = React.useState(0);
+
+    const goToNextPicture = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
 
     return (
-
-
-<Grid>
-    <div>
-        <Link to="/" style={{position:'absolute', left:1000, textDecoration:"none" ,color:'black',top:20 }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
-        <Link to="about" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black',top:20 }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About us' wrapped={false} /></Link>
-        <Link to="customer" style={{position:'absolute', left:1200, textDecoration:"none" ,color:'black',top:20 }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
-        <Link to="driver" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black',top:20 }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>
-    </div>
-
-
-
-
-
-    <Card sx={{maxWidth: 345,ml:25,mt:20}}>
-        <div style={{position:"absoulte",top:10}}>
-            <CardHeader
-                avatar={
-                    <Avatar sx={{bgcolor: red[500]}} aria-label="recipe">
-                        GC
-                    </Avatar>
-                }
-
-                title="General Cars"
-
-            />
-            <CardMedia style={{ position:"absolute", top:150,left:100}}
-                component="img"
-                height="194"
-                image={car2}
-                alt="Paella dish"
-            />
-            <CardContent>
-                <Typography variant="body2" color="text.secondary">
-
-                </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-            </CardActions>
+        <div
+            style={{
+                marginLeft: "40%",
+            }}
+        >
+            <h2>How to Create Image Slider in ReactJS?</h2>
+            <div
+                style={{
+                    maxWidth: 400,
+                    flexGrow: 1,
+                }}
+            >
+                <Paper
+                    square
+                    elevation={0}
+                    style={{
+                        height: 50,
+                        display: "flex",
+                        paddingLeft: theme.spacing(4),
+                        backgroundColor: theme.palette.background.default,
+                        alignItems: "center",
+                    }}
+                >
+                    <Typography>{MyCollection[index].label}</Typography>
+                </Paper>
+                <img
+                    src={MyCollection[index].imgPath}
+                    style={{
+                        height: 255,
+                        width: "100%",
+                        maxWidth: 400,
+                        display: "block",
+                        overflow: "hidden",
+                    }}
+                    alt={MyCollection[index].label}
+                />
+                <MobileStepper
+                    variant="text"
+                    position="static"
+                    index={index}
+                    steps={CollectionSize}
+                    nextButton={
+                        <Button
+                            size="small"
+                            onClick={goToNextPicture}
+                            disabled={index === CollectionSize - 1}
+                        >
+                            Next
+                            {theme.direction !== "rtl" ? (
+                                <KeyboardArrowRight />
+                            ) : (
+                                <KeyboardArrowLeft />
+                            )}
+                        </Button>
+                    }
+                />
+            </div>
         </div>
-
-
-
-
-
-            <CardHeader
-                avatar={
-                    <Avatar sx={{bgcolor: red[500]}} aria-label="recipe">
-                        GC
-                    </Avatar>
-                }
-
-                title="General Cars"
-
-            />
-            <CardMedia
-                component="img"
-                height="194"
-                image={car2}
-                alt="Paella dish"
-            />
-            <CardContent>
-                <Typography variant="body2" color="text.secondary">
-
-                </Typography>
-            </CardContent>
-            <CardActions disableSpacing>
-            </CardActions>
-        </Card>
-</Grid>
     );
-}
+};
 
-export default Car
+export default App;
