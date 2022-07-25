@@ -13,6 +13,7 @@ import Card from "../pages/sessions/Card";
 import Driver from "../pages/sessions/Driver";
 import AboutCars from "../pages/sessions/About Cars";
 import Test from "../pages/sessions/Test";
+import AboutUs from "../pages/sessions/AboutUs";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
             <Route path="sidebar" element={<Sidebar/>}/>
             <Route path="signup" element={<SignUp/>}/>
             <Route path="details" element={<DriverDetails/>}/>
-
+            <Route path="aboutus" element={<AboutUs/>}/>
             <Route path="test" element={<Test/>}/>
         </Routes>
     );
