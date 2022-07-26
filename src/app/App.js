@@ -19,6 +19,8 @@ import CustomerLogin from "../pages/sessions/CustomerLogin";
 import DriverLogin from "../pages/sessions/DriverLogin";
 import AdminLogin from "../pages/sessions/AdminLogin";
 import CustomerDashBoard from "../pages/sessions/CustomerDashBoard";
+import RentalRequest from "../pages/sessions/RentalRequest";
+import Income from "../pages/sessions/Income";
 
 function App() {
     return (
@@ -37,11 +39,13 @@ function App() {
             <Route path="details" element={<DriverDetails/>}/>
             <Route path="aboutus" element={<AboutUs/>}/>
             <Route path="test" element={<Test/>}/>
-            <Route path="admindashboard" element={<AdminDashBoard/>}/>
+            <Route exact path="admindashboard" element={<AdminDashBoard/>}/>
             <Route path="customerdashboard" element={<CustomerDashBoard/>}/>
             <Route path="customerlogin" element={<CustomerLogin/>}/>
             <Route path="driverlogin" element={<DriverLogin/>}/>
             <Route path="adminlogin" element={<AdminLogin/>}/>
+            <Route path="rentalrequest" element={<RentalRequest/>}/>
+            <Route path="income" element={<Income/>}/>
         </Routes>
     );
 }
