@@ -33,8 +33,8 @@ export default function AdminDashNav() {
                     </Link>
 
 
-                    <Link href="rentalrequest" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:6}}>Rental Request</Button>
+                    <Link href="viewRequest" underline="none">
+                        <Button  color='primary' variant="contained" sx={{ml:6}}>View Rental Request</Button>
                     </Link>
 
                     <Link href="income" underline="none">
