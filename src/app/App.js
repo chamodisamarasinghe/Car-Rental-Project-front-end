@@ -21,6 +21,7 @@ import AdminLogin from "../pages/sessions/AdminLogin";
 import CustomerDashBoard from "../pages/sessions/CustomerDashBoard";
 import RentalRequest from "../pages/sessions/RentalRequest";
 import Income from "../pages/sessions/Income";
+import ViewRequest from "../pages/sessions/ViewRequest";
 
 function App() {
     return (
@@ -46,6 +47,7 @@ function App() {
             <Route path="adminlogin" element={<AdminLogin/>}/>
             <Route path="rentalrequest" element={<RentalRequest/>}/>
             <Route path="income" element={<Income/>}/>
+            <Route path="viewRequest" element={<ViewRequest/>}/>
         </Routes>
     );
 }
