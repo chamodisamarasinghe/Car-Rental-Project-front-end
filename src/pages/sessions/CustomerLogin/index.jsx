@@ -5,14 +5,15 @@ import { styleSheet } from "./style";
 import TextField from '@mui/material/TextField';
 import GDSEButton from "../../../components/common/Button";
 import GDSESnackBar from "../../../components/common/SnackBar";
+import Link from "@material-ui/core/Link";
 
 const log = new URL("../../../assets/log.png",import.meta.url)
 class DriverLogin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: 'admin',
-            pw: 'admin',
+            userName: 'customer',
+            pw: 'customer',
             formData: {
                 user_name: '',
                 password: ''
@@ -83,6 +84,7 @@ class DriverLogin extends Component {
                         />
                     </div>
                     <div className={classes.btn__container}>
+                        <Link to="customerdashboard" underline="none">
                         <GDSEButton
                             variant="contained"
                             label="Login"
@@ -90,6 +92,7 @@ class DriverLogin extends Component {
                                 this.checkValidity()
                             }}
                         />
+                        </Link>
                     </div>
                 </div>
                 <GDSESnackBar
