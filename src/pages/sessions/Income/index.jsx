@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from "react";
+import AdminDashNav from "../AdminDashBoard/adminDashNav";
+import {Grid} from "@mui/material";
 
 
 
@@ -10,7 +12,10 @@ class Income extends Component {
     render() {
         return (
             <Fragment>
-                <h1>hello</h1>
+                <Grid >
+                    <AdminDashNav/>
+
+                </Grid>
             </Fragment>
         )
     }
