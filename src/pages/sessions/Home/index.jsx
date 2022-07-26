@@ -4,6 +4,19 @@ import {Link} from "react-router-dom";
 import NavBar from "../../../components/common/NavBar";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import MenuIcon from '@mui/icons-material/Menu';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import DrawerAppBar from "./homeDashNav";
+import HomeDashNav from "./homeDashNav";
 
 
 const car4 = new URL("../../../assets/car4.jpg",import.meta.url)
@@ -11,6 +24,8 @@ const car12 = new URL("../../../assets/car12.png",import.meta.url)
 const clock = new URL("../../../assets/clock.png",import.meta.url)
 const driv = new URL("../../../assets/driv.png",import.meta.url)
 const cc = new URL("../../../assets/cc.png",import.meta.url)
+
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -21,11 +36,12 @@ class Home extends Component {
             <Fragment>
                 <Grid >
                     <div>
-                        <Link to="/" style={{position:'absolute', left:900, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
-                        <Link to="aboutus" style={{position:'absolute', left:1000, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About Us' wrapped={false} /></Link>
-                        <Link to="test" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
-                        <Link to="driverlogin" style={{position:'absolute', left:1200, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>
-                        <Link to="adminlogin" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Admin' wrapped={false} /></Link>
+<HomeDashNav/>
+                        {/*<Link to="/" style={{position:'absolute', left:900, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>*/}
+                        {/*<Link to="aboutus" style={{position:'absolute', left:1000, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About Us' wrapped={false} /></Link>*/}
+                        {/*<Link to="customerlogin" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>*/}
+                        {/*<Link to="driverlogin" style={{position:'absolute', left:1200, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>*/}
+                        {/*<Link to="adminlogin" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Admin' wrapped={false} /></Link>*/}
 
                     </div>
                 </Grid>
