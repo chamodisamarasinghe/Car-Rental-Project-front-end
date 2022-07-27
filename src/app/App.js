@@ -1,6 +1,6 @@
 import React from "react";
 import {Routes, Route} from "react-router-dom";
-import DashBoard from "../pages/sessions/DriverDashBoard";
+
 import Customer from "../pages/sessions/ManageCustomer"
 
 import AddCar from "../pages/sessions/AddCar"
@@ -22,7 +22,7 @@ import Income from "../pages/sessions/Income";
 import ViewRequest from "../pages/sessions/ViewRequest";
 import CustomerSignUp from "../pages/sessions/CustomerSignUp";
 import ViewDriverDetails from "../pages/sessions/ViewDriverDetails";
-import DriverDashBoard from "../pages/sessions/DriverDashBoard";
+
 import DashDriver from "../pages/sessions/DashDriver";
 import ViewSchedule from "../pages/sessions/ViewDriverDetails";
 
