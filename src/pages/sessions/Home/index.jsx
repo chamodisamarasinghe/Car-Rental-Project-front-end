@@ -47,8 +47,8 @@ class Home extends Component {
                 </Grid>
 
                 <Grid>
-                    <img src={car12} style={{position:"absolute", top:2, left:2}}/>
-                    <h1 style={{color:"#00008B", left:60, position:"absolute", top:-20}}>Royal Car Service</h1>
+                    {/*<img src={car12} style={{position:"absolute", top:2, left:2}}/>*/}
+                    {/*<h1 style={{color:"#00008B", left:60, position:"absolute", top:-20}}>Royal Car Service</h1>*/}
                     <img src={clock} style={{ position:"absolute",top:8, left:460,height:30,width:30}}/>
                     <h1 style={{fontSize:20 ,color:"#00008B", left:500, position:"absolute", top:-3}}>Sunday to Friday(9.00am-10.00pm)</h1>
                     <img src={car4} style={{height:670,width:1495, position:"absolute",top:50, opacity:10}}/>
