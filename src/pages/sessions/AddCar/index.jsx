@@ -22,19 +22,26 @@ class AddCar extends Component {
         super(props);
         this.state = {
             formData: {
+                idCar:'',
                 regNo:'',
                 brand:'',
+                type:'',
                 noOfPassengers:'',
                 transmissionType:'',
                 fuelType:'',
                 color:'',
+                frontViewImage:'',
+                backViewImage:'',
+                sideViewImage:'',
+                internalViewImage:'',
                 dailyRate:'',
                 monthlyRate:'',
                 freeKmForPrice:'',
                 freeKmForDuration:'',
-                priceForExtraKm:'',
                 lossDamageWaiver:'',
-                completeKm:''
+                priceForExtraKm:'',
+                completeKm:'',
+                isAvailable:''
             },
             alert: false,
             message: '',
@@ -46,9 +53,9 @@ class AddCar extends Component {
         }
     }
 
-    deleteCar = async (regNo) => {
+    deleteCar = async (idCar) => {
         let params = {
-            regNo: regNo
+            idCar: idCar
         }
         let res = await CarService.deleteCar(params);
 
@@ -75,19 +82,26 @@ class AddCar extends Component {
             btnLabel: 'update',
             btnColor: 'secondary',
             formData: {
+                idCar:data.idCar,
                 regNo:data.regNo,
                 brand:data.brand,
+                type:data.type,
                 noOfPassengers:data.noOfPassengers,
                 transmissionType:data.transmissionType,
                 fuelType:data.fuelType,
                 color:data.color,
+                frontViewImage:data.frontViewImage,
+                backViewImage:data.backViewImage,
+                sideViewImage:data.sideViewImage,
+                internalViewImage:data.internalViewImage,
                 dailyRate:data.dailyRate,
                 monthlyRate:data.monthlyRate,
                 freeKmForPrice:data.freeKmForPrice,
                 freeKmForDuration:data.freeKmForDuration,
-                priceForExtraKm:data.priceForExtraKm,
                 lossDamageWaiver:data.lossDamageWaiver,
-                completeKm:data.completeKm
+                priceForExtraKm:data.priceForExtraKm,
+                completeKm:data.completeKm,
+                isAvailable:data.isAvailable
             }
         });
     };
@@ -95,19 +109,26 @@ class AddCar extends Component {
     clearFields = () => {
         this.setState({
             formData: {
+                idCar:'',
                 regNo:'',
                 brand:'',
+                type:'',
                 noOfPassengers:'',
                 transmissionType:'',
                 fuelType:'',
                 color:'',
+                frontViewImage:'',
+                backViewImage:'',
+                sideViewImage:'',
+                internalViewImage:'',
                 dailyRate:'',
                 monthlyRate:'',
                 freeKmForPrice:'',
                 freeKmForDuration:'',
-                priceForExtraKm:'',
                 lossDamageWaiver:'',
-                completeKm:''
+                priceForExtraKm:'',
+                completeKm:'',
+                isAvailable:''
             }
         });
     };
@@ -184,7 +205,7 @@ class AddCar extends Component {
 
     render() {
         return (
-            // <Fragment>
+
             <>
                 <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitCar} >
 
@@ -197,6 +218,32 @@ class AddCar extends Component {
                     <Grid container className="pt-2" spacing={3}>
                         <Grid item lg={12} xs={12} sm={12} md={12}>
                             <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Add a Car</Typography>
+
+
+
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Car Id</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Car Id"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.idCar}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.idCar = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+
+
+
+
+
+
                         </Grid>
                         <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Registration No</Typography>
@@ -214,6 +261,8 @@ class AddCar extends Component {
                                 }}
                                 validators={['required']}
                             />
+
+
                         </Grid>
                         <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Brand</Typography>
@@ -324,6 +373,86 @@ class AddCar extends Component {
 
 
                         <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Front View Image</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Color"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.frontViewImage}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.frontViewImage = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Back View Image</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Back View Image"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.backViewImage}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.backViewImage = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Side View Image</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Side View Image"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.sideViewImage}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.sideViewImage = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Internal View Image</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Internal View Image"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.internalViewImage}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.internalViewImage = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+
+
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Daily Rate</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -396,23 +525,7 @@ class AddCar extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={3} lg={3}>
-                            <Typography variant="subtitle1">Price for extra Km</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Price for extra Km"
-                                variant="outlined"
-                                size="small"
-                                // style={{ width: '100%' }}
-                                value={this.state.formData.priceForExtraKm}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.priceForExtraKm = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
+
 
                         <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Loss damage waiver</Typography>
@@ -431,6 +544,26 @@ class AddCar extends Component {
                                 validators={['required']}
                             />
                         </Grid>
+
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Price For ExtraKm</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Complete Km"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.priceForExtraKm}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.priceForExtraKm = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
 
 
                         <Grid item xs={12} sm={12} md={3} lg={3}>
@@ -452,6 +585,24 @@ class AddCar extends Component {
                         </Grid>
 
 
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Is Available</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Complete Km"
+                                variant="outlined"
+                                size="small"
+                                // style={{ width: '100%' }}
+                                value={this.state.formData.isAvailable}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.isAvailable = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
 
 
 
@@ -467,19 +618,26 @@ class AddCar extends Component {
                         <Table sx={{ minWidth: 650 }} aria-label="car table">
                             <TableHead>
                                 <TableRow>
+                                    <TableCell align="left">Car Id</TableCell>
                                     <TableCell align="left">Regitration No</TableCell>
                                     <TableCell align="left">Brand</TableCell>
+                                    <TableCell align="left">Type</TableCell>
                                     <TableCell align="left">No Of Passengers</TableCell>
                                     <TableCell align="left">Transmission Type</TableCell>
                                     <TableCell align="left">Fuel Type</TableCell>
                                     <TableCell align="left">Color</TableCell>
+                                    <TableCell align="left">Front View Image</TableCell>
+                                    <TableCell align="left">Back View Image</TableCell>
+                                    <TableCell align="left">Side View Image</TableCell>
+                                    <TableCell align="left">Internal View Image</TableCell>
                                     <TableCell align="left">Daily Rate</TableCell>
                                     <TableCell align="left">Monthly Rate</TableCell>
                                     <TableCell align="left">Free Km For Price</TableCell>
                                     <TableCell align="left">Free Km For Duration</TableCell>
-                                    <TableCell align="left">Price For Extra Km</TableCell>
                                     <TableCell align="left">Loss Damage Waiver</TableCell>
+                                    <TableCell align="left">Price For ExtraKm</TableCell>
                                     <TableCell align="left">Complete Km</TableCell>
+                                    <TableCell align="left">Is Available</TableCell>
                                     <TableCell align="left">Action</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -487,18 +645,25 @@ class AddCar extends Component {
                                 {
                                     this.state.data.map((row) => (
                                         <TableRow>
+                                            <TableCell align="left">{row.id}</TableCell>
                                             <TableCell align="left">{row.regNo}</TableCell>
                                             <TableCell align="left">{row.brand}</TableCell>
                                             <TableCell align="left">{row.noOfPassengers}</TableCell>
                                             <TableCell align="left">{row.transmissionType}</TableCell>
                                             <TableCell align="left">{row.fuelType}</TableCell>
                                             <TableCell align="left">{row.color}</TableCell>
+                                            <TableCell align="left">{row.frontViewImage}</TableCell>
+                                            <TableCell align="left">{row.backViewImage}</TableCell>
+                                            <TableCell align="left">{row.sideViewImage}</TableCell>
+                                            <TableCell align="left">{row.internalViewImage}</TableCell>
                                             <TableCell align="left">{row.dailyRate}</TableCell>
                                             <TableCell align="left">{row.monthlyRate}</TableCell>
                                             <TableCell align="left">{row.freeKmForPrice}</TableCell>
                                             <TableCell align="left">{row.freeKmForDuration}</TableCell>
+                                            <TableCell align="left">{row.lossDamageWaiver}</TableCell>
                                             <TableCell align="left">{row.priceForExtraKm}</TableCell>
                                             <TableCell align="left">{row.completeKm}</TableCell>
+                                            <TableCell align="left">{row.isAvailable}</TableCell>
                                             <TableCell align="left">
                                                 <Tooltip title="Edit">
                                                     <IconButton

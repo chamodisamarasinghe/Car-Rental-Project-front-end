@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import {Link} from "react-router-dom";
 import NavBar from "../../../components/common/NavBar";
 import Grid from "@material-ui/core/Grid";
+import DriverDashNav from "../ViewDriverDetails/driverDashNav";
+import HomeDashNav from "../Home/homeDashNav";
 
 const about = new URL("../../../assets/about.jpg",import.meta.url)
 const car12 = new URL("../../../assets/car12.png",import.meta.url)
@@ -15,13 +17,8 @@ class AboutUs extends Component {
         return (
             <Fragment>
                 <Grid >
-                    <div>
-                        <Link to="/" style={{position:'absolute', left:900, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>
-                        <Link to="aboutus" style={{position:'absolute', left:1000, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About Us' wrapped={false} /></Link>
-                        <Link to="test" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Cars' wrapped={false} /></Link>
-                        <Link to="customer" style={{position:'absolute', left:1200, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>
-                        <Link to="driver" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>
-                    </div>
+                    <HomeDashNav/>
+
                 </Grid>
 
 
