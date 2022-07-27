@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Grid, Typography } from "@mui/material";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import GDSEButton from "../../../components/common/Button";
-import CustomerService from "../../../services/CustomerService";
+import DriverService from "../../../services/DriverService";
 import GDSESnackBar from "../../../components/common/SnackBar";
 import {Link} from "react-router-dom";
 import NavBar from "../../../components/common/NavBar";
@@ -25,12 +25,16 @@ class Driver extends Component {
         super(props);
         this.state = {
             formData: {
-                licenseNo: '',
-                name: '',
-                address: '',
-                contactNo: '',
-                email: '',
-                nic: ''
+                driverId:'',
+                driverName:'',
+                driverAddress:'',
+                contactNo:'',
+                nic:'',
+                licenseNo:'',
+                vehicleNo:'',
+                workingDate:'',
+                workingTime:'',
+                customerId: ''
             },
             alert: false,
             message: '',
@@ -42,11 +46,11 @@ class Driver extends Component {
         }
     }
 
-    deleteCustomer = async (id) => {
+    deleteDriver = async (driverId) => {
         let params = {
-            id: id
+            driverId: driverId
         }
-        let res = await CustomerService.deleteCustomer(params);
+        let res = await DriverService.deleteDriver(params);
 
         if(res.status === 200) {
             this.setState({
@@ -64,19 +68,23 @@ class Driver extends Component {
         }
     };
 
-    updateCustomer = (data) => {
+    updateDriver = (data) => {
         console.log(data)
 
         this.setState({
             btnLabel: 'update',
             btnColor: 'secondary',
             formData: {
-                id: data.id,
-                name: data.name,
-                address: data.address,
-                contactNo: data.contactNo,
-                email: data.email,
-                nic: data.nic
+                driverId: data.driverId,
+                driverName:data.driverName,
+                driverAddress:data.driverAddress,
+                contactNo:data.contactNo,
+                nic:data.nic,
+                licenseNo:data.licenseNo,
+                vehicleNo:data.vehicleNo,
+                workingDate:data.workingDate,
+                workingTime:data.workingTime,
+                customerId:data.customerId
             }
         });
     };
@@ -84,12 +92,16 @@ class Driver extends Component {
     clearFields = () => {
         this.setState({
             formData: {
-                id: '',
-                name: '',
-                address: '',
-                contactNo: '',
-                email: '',
-                nic: '',
+                driverId:'',
+                driverName:'',
+                driverAddress:'',
+                contactNo:'',
+                nic:'',
+                licenseNo:'',
+                vehicleNo:'',
+                workingDate:'',
+                workingTime:'',
+                customerId: ''
 
             }
         });
@@ -103,7 +115,7 @@ class Driver extends Component {
     };
 
     loadData = async () => {
-        let res = await CustomerService.fetchCustomer();
+        let res = await DriverService.fetchDriver();
 
         if (res.status === 200) {
             this.setState({
@@ -116,11 +128,11 @@ class Driver extends Component {
 
     };
 
-    submitCustomer = async () => {
+    submitDriver = async () => {
         let formData = this.state.formData;
 
         if(this.state.btnLabel === "save") {
-            let res = await CustomerService.postCustomer(formData);
+            let res = await DriverService.postDriver(formData);
 
             console.log(res)    //print the promise
 
@@ -140,7 +152,7 @@ class Driver extends Component {
                 });
             }
         } else {
-            let res = await CustomerService.putCustomer(formData);
+            let res = await DriverService.putDriver(formData);
             if(res.status === 200) {
                 this.setState({
                     alert: true,
@@ -172,16 +184,10 @@ class Driver extends Component {
             // <Grid style={{backgroundImage: "url(" + Background + ")"}}>
             <>
 
-                <ValidatorForm  ref="form" className="pt-2" onSubmit={this.submitCustomer} >
+                <ValidatorForm  ref="form" className="pt-2" onSubmit={this.submitDriver} >
                     <Grid >
                         <AdminDashNav/>
-                        {/*<div>*/}
-                        {/*    <Link to="/" style={{position:'absolute', left:900, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Home' wrapped={false} /></Link>*/}
-                        {/*    <Link to="aboutus" style={{position:'absolute', left:1000, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='About Us' wrapped={false} /></Link>*/}
-                        {/*    <Link to="test" style={{position:'absolute', left:1100, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Cars' wrapped={false} /></Link>*/}
-                        {/*    <Link to="customer" style={{position:'absolute', left:1200, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false} iconPosition='top' label='Customer' wrapped={false} /></Link>*/}
-                        {/*    <Link to="driver" style={{position:'absolute', left:1300, textDecoration:"none" ,color:'black' }}><NavBar disabled={false} disableFocusRipple={false} disableRipple={false}  iconPosition='top' label='Drivers' wrapped={false} /></Link>*/}
-                        {/*</div>*/}
+
                     </Grid>
 
 
@@ -193,18 +199,18 @@ class Driver extends Component {
                         </Grid>
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography style={{top:145, left:65, position:"absolute"}} variant="subtitle1"  >License No</Typography>
+
+                        <Grid item xs={12} sm={12} md={3} lg={6} >
+                            <Typography  variant="subtitle1"  >Driver Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="License No"
+                                placeholder="Driver Id"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '90%', left:50 ,top:100}}
-                                value={this.state.formData.id}
+                                value={this.state.formData.driverId}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.id = e.target.value
+                                    formData.driverId = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -212,48 +218,50 @@ class Driver extends Component {
                         </Grid>
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography style={{top:145, left:820, position:"absolute"}} variant="subtitle1" >Driver Name</Typography>
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1" >Driver Name</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Driver Name"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '90%', left:50 ,top:100}}
-                                value={this.state.formData.name}
+                                value={this.state.formData.driverName}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.name = e.target.value
+                                    formData.driverName = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography style={{top:230, left:65, position:"absolute"}} variant="subtitle1" >Driver Address</Typography>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1" >Driver Address</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Driver Address"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '90%', left:50 ,top:120}}
-                                value={this.state.formData.address}
+                                value={this.state.formData.driverAddress}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.address = e.target.value
+                                    formData.driverAddress = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
                             />
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6} >
-                            <Typography style={{top:230, left:820, position:"absolute"}} variant="subtitle1" >Contact No</Typography>
+
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1" >Contact No</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Contact No"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '90%', left:50 ,top:120}}
                                 value={this.state.formData.contactNo}
                                 onChange={(e) => {
                                     let formData = this.state.formData
@@ -264,18 +272,106 @@ class Driver extends Component {
                             />
                         </Grid>
 
-                        <Grid  item xs={12} sm={12} md={6} lg={6} >
-                            <Typography style={{top:320, left:65, position:"absolute"}} variant="subtitle1" >NIC</Typography>
+                        <Grid  item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1" >NIC</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Email"
                                 variant="outlined"
                                 size="small"
-                                style={{ width: '90%', left:50 ,top:150}}
-                                value={this.state.formData.email}
+                                value={this.state.formData.nic}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.email = e.target.value
+                                    formData.nic = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1"  >License No</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="License No"
+                                variant="outlined"
+                                size="small"
+                                value={this.state.formData.licenseNo}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.licenseNo = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1"  >Vehicle Num</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Vehicle Num"
+                                variant="outlined"
+                                size="small"
+                                value={this.state.formData.vehicleNo}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.vehicleNo = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1"  >Working Date</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Working Date"
+                                variant="outlined"
+                                size="small"
+                                value={this.state.formData.workingDate}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.workingDate= e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1"  >Working Time</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Working Time"
+                                variant="outlined"
+                                size="small"
+                                value={this.state.formData.workingTime}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.workingTime = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+                        <Grid item xs={12} sm={12} md={3} lg={3} >
+                            <Typography  variant="subtitle1"  >Customer Id</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Customer Id"
+                                variant="outlined"
+                                size="small"
+                                value={this.state.formData.customerId}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.customerId = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -285,21 +381,26 @@ class Driver extends Component {
 
 
 
-                        <Grid container style={{ marginTop: '200px', left:200 }} direction="row" justifyContent="flex-end" alignItems="center">
+                        <Grid container style={{ marginTop: '10px', left:200 }} direction="row" justifyContent="flex-end" alignItems="center">
                             <GDSEButton label={this.state.btnLabel} type="submit" size="large" color={this.state.btnColor} variant="contained"/>
                         </Grid>
                     </Grid>
                 </ValidatorForm>
-                <Grid contaner style={{ marginTop: '40px' }}>
+                <Grid contaner style={{ marginTop: '15px' }}>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 650 }} aria-label="customer table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align="left">License No</TableCell>
+                                    <TableCell align="left">Driver Id</TableCell>
                                     <TableCell align="left">Driver Name</TableCell>
                                     <TableCell align="left">Driver Address</TableCell>
                                     <TableCell align="left">Contact No</TableCell>
                                     <TableCell align="left">NIC</TableCell>
+                                    <TableCell align="left">License No</TableCell>
+                                    <TableCell align="left">Vehicle No</TableCell>
+                                    <TableCell align="left">Working Date</TableCell>
+                                    <TableCell align="left">Working Time</TableCell>
+                                    <TableCell align="left">Customer Id</TableCell>
                                     <TableCell align="left">Action</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -307,17 +408,22 @@ class Driver extends Component {
                                 {
                                     this.state.data.map((row) => (
                                         <TableRow>
-                                            <TableCell align="left">{row.licenseNo}</TableCell>
-                                            <TableCell align="left">{row.name}</TableCell>
-                                            <TableCell align="left">{row.address}</TableCell>
+                                            <TableCell align="left">{row.driverId}</TableCell>
+                                            <TableCell align="left">{row.driverName}</TableCell>
+                                            <TableCell align="left">{row.driverAddress}</TableCell>
                                             <TableCell align="left">{row.contactNo}</TableCell>
                                             <TableCell align="left">{row.nic}</TableCell>
+                                            <TableCell align="left">{row.licenseNo}</TableCell>
+                                            <TableCell align="left">{row.vehicleNo}</TableCell>
+                                            <TableCell align="left">{row.workingDate}</TableCell>
+                                            <TableCell align="left">{row.workingTime}</TableCell>
+                                            <TableCell align="left">{row.customerId}</TableCell>
                                             <TableCell align="left">
                                                 <Tooltip title="Edit">
                                                     <IconButton
                                                         onClick={() => {
                                                             console.log("edit icon clicked!")
-                                                            this.updateCustomer(row);
+                                                            this.updateDriver(row);
                                                         }}
                                                     >
                                                         <EditIcon color="primary" />
@@ -326,7 +432,7 @@ class Driver extends Component {
                                                 <Tooltip title="Delete">
                                                     <IconButton
                                                         onClick={() => {
-                                                            this.deleteCustomer(row.id)
+                                                            this.deleteDriver(row.id)
                                                         }}
                                                     >
                                                         <DeleteIcon color="error" />
