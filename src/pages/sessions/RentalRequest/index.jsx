@@ -17,6 +17,8 @@ import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
 import AdminDashNav from "../AdminDashBoard/adminDashNav";
 import RentDashNav from "../CustomerDashBoard/rentNav";
+import RentService from "../../../services/RentService";
+
 
 class RentalRequest extends Component {
     constructor(props) {
@@ -32,7 +34,9 @@ class RentalRequest extends Component {
                 carType:'',
                 wantDriver:'',
                 cusId:'',
-                regNo:''
+                regNo:'',
+                userName:'',
+                passWord:''
             },
             alert: false,
             message: '',
@@ -49,7 +53,7 @@ class RentalRequest extends Component {
 
 
 
-    updateCustomer = (data) => {
+    updateRent = (data) => {
         console.log(data)
 
         this.setState({
@@ -65,7 +69,9 @@ class RentalRequest extends Component {
                 carType:data.carType,
                 wantDriver:data.wantDriver,
                 cusId:data.cusId,
-                regNo:data.regNo
+                regNo:data.regNo,
+                userName:data.userName,
+                passWord:data.passWord
             }
         });
     };
@@ -73,10 +79,18 @@ class RentalRequest extends Component {
     clearFields = () => {
         this.setState({
             formData: {
-                id: '',
-                name: '',
-                address: '',
-                salary: ''
+                rentId:'',
+                pickUpDate:'',
+                pickUpTime:'',
+                returnDate:'',
+                returnTime:'',
+                slip:'',
+                carType:'',
+                wantDriver:'',
+                cusId:'',
+                regNo:'',
+                userName:'',
+                passWord:''
             }
         });
     };
@@ -89,7 +103,7 @@ class RentalRequest extends Component {
     };
 
     loadData = async () => {
-        let res = await CustomerService.fetchCustomer();
+        let res = await RentService.fetchRent();
 
         if (res.status === 200) {
             this.setState({
@@ -102,13 +116,13 @@ class RentalRequest extends Component {
 
     };
 
-    submitCustomer = async () => {
+    submitRent = async () => {
         let formData = this.state.formData;
 
         if(this.state.btnLabel === "save") {
-            let res = await CustomerService.postCustomer(formData);
+            let res = await RentService.postRent(formData);
 
-            console.log(res)    //print the promise
+            console.log(res)
 
             if (res.status === 201) {
                 this.setState({
@@ -126,7 +140,7 @@ class RentalRequest extends Component {
                 });
             }
         } else {
-            let res = await CustomerService.putCustomer(formData);
+            let res = await RentService.putRent(formData);
             if(res.status === 200) {
                 this.setState({
                     alert: true,
@@ -155,7 +169,7 @@ class RentalRequest extends Component {
         return (
             // <Fragment>
             <>
-                <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitCustomer} >
+                <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitRent} >
 
 
                     <Grid>
@@ -169,7 +183,7 @@ class RentalRequest extends Component {
                         <Grid item lg={12} xs={12} sm={12} md={12}>
                             <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Rent a Car</Typography>
                         </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Rent Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -188,7 +202,7 @@ class RentalRequest extends Component {
                         </Grid>
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Pickup Date</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -207,7 +221,7 @@ class RentalRequest extends Component {
                         </Grid>
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Pickup Time</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -227,7 +241,7 @@ class RentalRequest extends Component {
 
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Return Date</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -245,7 +259,7 @@ class RentalRequest extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Return Time</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -263,7 +277,7 @@ class RentalRequest extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Slip</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -284,7 +298,7 @@ class RentalRequest extends Component {
 
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Car Type</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -302,7 +316,7 @@ class RentalRequest extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Driver want/ not</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -321,7 +335,7 @@ class RentalRequest extends Component {
                         </Grid>
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Customer Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -339,7 +353,7 @@ class RentalRequest extends Component {
                             />
                         </Grid>
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
                             <Typography variant="subtitle1">Registration No</Typography>
                             <TextValidator
                                 id="outlinedbasic"
@@ -358,8 +372,60 @@ class RentalRequest extends Component {
                         </Grid>
 
 
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Customer Id</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Customer Id"
+                                variant="outlined"
+                                size="small"
+                                style={{ width: '100%' }}
+                                value={this.state.formData.cusId}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.cusId = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">User Name</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="User Name"
+                                variant="outlined"
+                                size="small"
+                                style={{ width: '100%' }}
+                                value={this.state.formData.userName}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.userName = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
 
 
+                        <Grid item xs={12} sm={12} md={3} lg={3}>
+                            <Typography variant="subtitle1">Pass Word</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Pass Word"
+                                variant="outlined"
+                                size="small"
+                                style={{ width: '100%' }}
+                                value={this.state.formData.passWord}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.passWord = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
 
 
 
@@ -386,6 +452,8 @@ class RentalRequest extends Component {
                                     <TableCell align="left">Driver want/ not</TableCell>
                                     <TableCell align="left">Customer Id</TableCell>
                                     <TableCell align="left">Registration No</TableCell>
+                                    <TableCell align="left">User Name</TableCell>
+                                    <TableCell align="left">Pass Word</TableCell>
                                     <TableCell align="left">Action</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -402,12 +470,14 @@ class RentalRequest extends Component {
                                             <TableCell align="left">{row.wantDriver}</TableCell>
                                             <TableCell align="left">{row.cusId}</TableCell>
                                             <TableCell align="left">{row.regNo}</TableCell>
+                                            <TableCell align="left">{row.userName}</TableCell>
+                                            <TableCell align="left">{row.passWord}</TableCell>
                                             <TableCell align="left">
                                                 <Tooltip title="Edit">
                                                     <IconButton
                                                         onClick={() => {
                                                             console.log("edit icon clicked!")
-                                                            this.updateCustomer(row);
+                                                            this.updateRent(row);
                                                         }}
                                                     >
                                                         <EditIcon color="primary" />
@@ -416,7 +486,7 @@ class RentalRequest extends Component {
                                                 <Tooltip title="Delete">
                                                     <IconButton
                                                         onClick={() => {
-                                                            this.deleteCustomer(row.rentId)
+                                                            this.deleteRent(row.rentId)
                                                         }}
                                                     >
                                                         <DeleteIcon color="error" />
