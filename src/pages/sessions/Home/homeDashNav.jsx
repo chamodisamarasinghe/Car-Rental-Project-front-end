@@ -37,6 +37,10 @@ export default function HomeDashNav() {
                         <Button  color='primary' variant="contained" sx={{ml:6}}>Customer</Button>
                     </Link>
 
+                    <Link href="dashdriver" underline="none">
+                        <Button  color='primary' variant="contained" sx={{ml:8}}>Driver</Button>
+                    </Link>
+
                     {/*<Link href="income" underline="none">*/}
                     {/*    <Button  color='primary' variant="contained" sx={{ml:8}}>Income</Button>*/}
                     {/*</Link>*/}
