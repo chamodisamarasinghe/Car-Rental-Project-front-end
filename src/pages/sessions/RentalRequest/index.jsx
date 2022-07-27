@@ -21,10 +21,16 @@ class RentalRequest extends Component {
         super(props);
         this.state = {
             formData: {
-                id: '',
-                name: '',
-                address: '',
-                salary: ''
+                rentId: '',
+                pickUpDate: '',
+                pickUpTime: '',
+                returnDate: '',
+                returnTime:'',
+                slip:'',
+                carType:'',
+                wantDriver:'',
+                cusId:'',
+                regNo:''
             },
             alert: false,
             message: '',
@@ -48,10 +54,16 @@ class RentalRequest extends Component {
             btnLabel: 'update',
             btnColor: 'secondary',
             formData: {
-                id: data.id,
-                name: data.name,
-                address: data.address,
-                salary: data.salary
+                rentId: data.rentId,
+                pickUpDate:data.pickUpDate,
+                pickUpTime:data.pickUpTime,
+                returnDate:data.returnDate,
+                returnTime:data.returnTime,
+                slip:data.slip,
+                carType:data.carType,
+                wantDriver:data.wantDriver,
+                cusId:data.cusId,
+                regNo:data.regNo
             }
         });
     };
@@ -144,71 +156,20 @@ class RentalRequest extends Component {
                 <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitCustomer} >
                     <Grid container className="pt-2" spacing={3}>
                         <Grid item lg={12} xs={12} sm={12} md={12}>
-                            <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Add a Car</Typography>
+                            <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Rent a Car</Typography>
                         </Grid>
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Regitration No</Typography>
+                            <Typography variant="subtitle1">Rent Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="Regitration No"
+                                placeholder="Rent Id"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.id}
+                                value={this.state.formData.rentId}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.id = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Brand</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Brand"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.name}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.name = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Type</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Type"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.address}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.address = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">No of Passengers</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="No of Passengers"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.salary}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.rentId = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -217,53 +178,17 @@ class RentalRequest extends Component {
 
 
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Transmission type</Typography>
+                            <Typography variant="subtitle1">Pickup Date</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="Transmission type"
+                                placeholder="Pickup Date"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.address}
+                                value={this.state.formData.pickUpDate}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.address = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Fuel Type</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Fuel Type"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.salary}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.salary = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Color</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Color"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.salary}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.pickUpDate = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -272,17 +197,37 @@ class RentalRequest extends Component {
 
 
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Daily Rate</Typography>
+                            <Typography variant="subtitle1">Pickup Time</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="Daily Rate"
+                                placeholder="Pickup Time"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.salary}
+                                value={this.state.formData.pickUpTime}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.pickUpTime = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Typography variant="subtitle1">Return Date</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Return Date"
+                                variant="outlined"
+                                size="small"
+                                style={{ width: '100%' }}
+                                value={this.state.formData.returnDate}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.returnDate = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -290,17 +235,17 @@ class RentalRequest extends Component {
                         </Grid>
 
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Monthly Rate</Typography>
+                            <Typography variant="subtitle1">Return Time</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="Monthly Rate"
+                                placeholder="Return Time"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.salary}
+                                value={this.state.formData.returnTime}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.returnTime = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -308,17 +253,56 @@ class RentalRequest extends Component {
                         </Grid>
 
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Free Km for price</Typography>
+                            <Typography variant="subtitle1">Slip</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Slip"
+                                variant="outlined"
+                                size="small"
+                                style={{ width: '100%' }}
+                                value={this.state.formData.slip}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.slip = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+
+
+
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Typography variant="subtitle1">Car Type</Typography>
+                            <TextValidator
+                                id="outlinedbasic"
+                                placeholder="Car Type"
+                                variant="outlined"
+                                size="small"
+                                style={{ width: '100%' }}
+                                value={this.state.formData.carType}
+                                onChange={(e) => {
+                                    let formData = this.state.formData
+                                    formData.carType = e.target.value
+                                    this.setState({ formData })
+                                }}
+                                validators={['required']}
+                            />
+                        </Grid>
+
+                        <Grid item xs={12} sm={12} md={6} lg={6}>
+                            <Typography variant="subtitle1">Driver want/ not</Typography>
                             <TextValidator
                                 id="outlinedbasic"
                                 placeholder="Free Km for price"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.salary}
+                                value={this.state.formData.wantDriver}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.wantDriver = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -327,17 +311,17 @@ class RentalRequest extends Component {
 
 
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Free Km for duration</Typography>
+                            <Typography variant="subtitle1">Customer Id</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="Free Km for duration"
+                                placeholder="Customer Id"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.salary}
+                                value={this.state.formData.cusId}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.cusId = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -345,35 +329,17 @@ class RentalRequest extends Component {
                         </Grid>
 
                         <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Price for extra Km</Typography>
+                            <Typography variant="subtitle1">Registration No</Typography>
                             <TextValidator
                                 id="outlinedbasic"
-                                placeholder="Price for extra Km"
+                                placeholder="Registration No"
                                 variant="outlined"
                                 size="small"
                                 style={{ width: '100%' }}
-                                value={this.state.formData.salary}
+                                value={this.state.formData.regNo}
                                 onChange={(e) => {
                                     let formData = this.state.formData
-                                    formData.salary = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
-
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Loss damage waiver</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Loss damage waiver"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.salary}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.salary = e.target.value
+                                    formData.regNo = e.target.value
                                     this.setState({ formData })
                                 }}
                                 validators={['required']}
@@ -381,23 +347,9 @@ class RentalRequest extends Component {
                         </Grid>
 
 
-                        <Grid item xs={12} sm={12} md={6} lg={6}>
-                            <Typography variant="subtitle1">Complete Km</Typography>
-                            <TextValidator
-                                id="outlinedbasic"
-                                placeholder="Complete Km"
-                                variant="outlined"
-                                size="small"
-                                style={{ width: '100%' }}
-                                value={this.state.formData.salary}
-                                onChange={(e) => {
-                                    let formData = this.state.formData
-                                    formData.salary = e.target.value
-                                    this.setState({ formData })
-                                }}
-                                validators={['required']}
-                            />
-                        </Grid>
+
+
+
 
 
 
@@ -415,10 +367,14 @@ class RentalRequest extends Component {
                         <Table sx={{ minWidth: 650 }} aria-label="customer table">
                             <TableHead>
                                 <TableRow>
+                                    <TableCell align="left">Rent Id</TableCell>
+                                    <TableCell align="left">Pickup Time</TableCell>
+                                    <TableCell align="left">Return Date</TableCell>
+                                    <TableCell align="left">Return Time</TableCell>
+                                    <TableCell align="left">Car Type</TableCell>
+                                    <TableCell align="left">Driver want/ not</TableCell>
                                     <TableCell align="left">Customer Id</TableCell>
-                                    <TableCell align="left">Customer Name</TableCell>
-                                    <TableCell align="left">Customer Address</TableCell>
-                                    <TableCell align="left">Customer Salary</TableCell>
+                                    <TableCell align="left">Registration No</TableCell>
                                     <TableCell align="left">Action</TableCell>
                                 </TableRow>
                             </TableHead>
@@ -426,10 +382,15 @@ class RentalRequest extends Component {
                                 {
                                     this.state.data.map((row) => (
                                         <TableRow>
-                                            <TableCell align="left">{row.id}</TableCell>
-                                            <TableCell align="left">{row.name}</TableCell>
-                                            <TableCell align="left">{row.address}</TableCell>
-                                            <TableCell align="left">{row.salary}</TableCell>
+                                            <TableCell align="left">{row.rentId}</TableCell>
+                                            <TableCell align="left">{row.pickUpDate}</TableCell>
+                                            <TableCell align="left">{row.pickUpTime}</TableCell>
+                                            <TableCell align="left">{row.returnDate}</TableCell>
+                                            <TableCell align="left">{row.returnTime}</TableCell>
+                                            <TableCell align="left">{row.carType}</TableCell>
+                                            <TableCell align="left">{row.wantDriver}</TableCell>
+                                            <TableCell align="left">{row.cusId}</TableCell>
+                                            <TableCell align="left">{row.regNo}</TableCell>
                                             <TableCell align="left">
                                                 <Tooltip title="Edit">
                                                     <IconButton
@@ -444,7 +405,7 @@ class RentalRequest extends Component {
                                                 <Tooltip title="Delete">
                                                     <IconButton
                                                         onClick={() => {
-                                                            this.deleteCustomer(row.id)
+                                                            this.deleteCustomer(row.rentId)
                                                         }}
                                                     >
                                                         <DeleteIcon color="error" />
