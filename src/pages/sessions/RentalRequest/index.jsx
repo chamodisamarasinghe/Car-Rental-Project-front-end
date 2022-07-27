@@ -15,6 +15,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import EditIcon from '@mui/icons-material/Edit';
+import AdminDashNav from "../AdminDashBoard/adminDashNav";
+import RentDashNav from "../CustomerDashBoard/rentNav";
 
 class RentalRequest extends Component {
     constructor(props) {
@@ -154,6 +156,15 @@ class RentalRequest extends Component {
             // <Fragment>
             <>
                 <ValidatorForm ref="form" className="pt-2" onSubmit={this.submitCustomer} >
+
+
+                    <Grid>
+                        <RentDashNav/>
+                    </Grid>
+
+
+
+
                     <Grid container className="pt-2" spacing={3}>
                         <Grid item lg={12} xs={12} sm={12} md={12}>
                             <Typography variant="h3" style={{marginLeft:520, marginTop:10, color:"#00008B", fontWeight:"bold", fontSize:40}}>Rent a Car</Typography>
