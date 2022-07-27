@@ -1,14 +1,13 @@
-import { Typography } from "@mui/material";
+import {Link, Typography} from "@mui/material";
 import { withStyles } from "@mui/styles";
 import React, { Component } from "react";
 import { styleSheet } from "./style";
 import TextField from '@mui/material/TextField';
 import GDSEButton from "../../../components/common/Button";
 import GDSESnackBar from "../../../components/common/SnackBar";
-import Link from "@material-ui/core/Link";
 
 const log = new URL("../../../assets/log.png",import.meta.url)
-class DriverLogin extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -84,7 +83,7 @@ class DriverLogin extends Component {
                         />
                     </div>
                     <div className={classes.btn__container}>
-                        <Link to="customerdashboard" underline="none">
+                        <Link href="rentalrequest" underline="none">
                         <GDSEButton
                             variant="contained"
                             label="Login"
@@ -109,4 +108,4 @@ class DriverLogin extends Component {
         )
     }
 }
-export default withStyles(styleSheet)(DriverLogin)
+export default withStyles(styleSheet)(Login)
