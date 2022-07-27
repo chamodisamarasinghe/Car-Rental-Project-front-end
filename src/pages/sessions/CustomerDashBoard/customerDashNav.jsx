@@ -28,14 +28,14 @@ export default function CustomerDashNav() {
                         <Button  color='primary' variant="contained" sx={{ml:2}}>View About Cars</Button>
                     </Link>
 
-                    <Link href="customer" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:4}}>Rent a Car</Button>
+                    <Link href="customersignup" underline="none">
+                        <Button  color='primary' variant="contained" sx={{ml:4}}>Sign Up</Button>
                     </Link>
 
 
-                    {/*<Link href="customerdashboard" underline="none">*/}
-                    {/*    <Button  color='primary' variant="contained" sx={{ml:6}}>Customer</Button>*/}
-                    {/*</Link>*/}
+                    <Link href="customerlogin" underline="none">
+                        <Button  color='primary' variant="contained" sx={{ml:6}}>Login</Button>
+                    </Link>
 
                     {/*<Link href="income" underline="none">*/}
                     {/*    <Button  color='primary' variant="contained" sx={{ml:8}}>Income</Button>*/}

@@ -22,6 +22,7 @@ import CustomerDashBoard from "../pages/sessions/CustomerDashBoard";
 import RentalRequest from "../pages/sessions/RentalRequest";
 import Income from "../pages/sessions/Income";
 import ViewRequest from "../pages/sessions/ViewRequest";
+import CustomerSignUp from "../pages/sessions/CustomerSignUp";
 
 function App() {
     return (
@@ -29,14 +30,14 @@ function App() {
         <Routes>
             <Route exact path='/' element={<Home/>}/>
             <Route path="dashboard" element={<DashBoard/>}/>
-            <Route path="login" element={<Login/>}/>
+            <Route exact path="login" element={<Login/>}/>
             <Route path="customer" element={<Customer/>}/>
             <Route path="driver" element={<Driver/>}/>
             <Route path="card" element={<Card/>}/>
             <Route path="addcar" element={<AddCar/>}/>
             <Route path="about" element={<AboutCars/>}/>
             <Route path="sidebar" element={<Sidebar/>}/>
-            <Route path="signup" element={<SignUp/>}/>
+            <Route path="customersignup" element={<CustomerSignUp/>}/>
             <Route path="details" element={<DriverDetails/>}/>
             <Route path="aboutus" element={<AboutUs/>}/>
             <Route path="test" element={<Test/>}/>
