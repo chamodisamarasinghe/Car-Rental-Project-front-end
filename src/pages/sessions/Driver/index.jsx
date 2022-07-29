@@ -354,7 +354,7 @@ const Driver = ({}) => {
 
     const deleteDriver = async (did) => {
         let params = {
-            registrationNO: did
+            did: did
         }
         let res = await DriverService.deleteDriver(params);
 
