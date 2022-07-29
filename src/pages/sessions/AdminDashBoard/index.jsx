@@ -12,6 +12,7 @@ import TextField from "@material-ui/core/TextField";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 
 const ad = new URL("../../../assets/ad.png",import.meta.url)
+const car9 = new URL("../../../assets/car9.png",import.meta.url)
 class AdminDashBoard extends Component {
     value: string;
     constructor(props) {
@@ -39,6 +40,7 @@ class AdminDashBoard extends Component {
 
 
                 <Grid>
+                    <img src={car9} style={{ position:"absolute",top:8, left:200,height:30,width:30}}/>
                     <img src={ad} style={{position:"absolute", top:70, left:800,width:100,height:100}}/>
                 </Grid>
 
