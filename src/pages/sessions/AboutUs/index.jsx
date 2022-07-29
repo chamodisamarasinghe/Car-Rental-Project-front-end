@@ -8,6 +8,8 @@ import HomeDashNav from "../Home/homeDashNav";
 const about = new URL("../../../assets/about.jpg",import.meta.url)
 const car12 = new URL("../../../assets/car12.png",import.meta.url)
 const clock = new URL("../../../assets/clock.png",import.meta.url)
+const car9 = new URL("../../../assets/car9.png",import.meta.url)
+const clo = new URL("../../../assets/clo.png",import.meta.url)
 class AboutUs extends Component {
     constructor(props) {
         super(props);
@@ -23,10 +25,13 @@ class AboutUs extends Component {
 
 
                 <Grid>
-                    <img src={car12} style={{position:"absolute", top:2, left:2}}/>
-                    <h1 style={{color:"#00008B", left:60, position:"absolute", top:-20}}>Royal Car Service</h1>
-                    <img src={clock} style={{ position:"absolute",top:8, left:460,height:30,width:30}}/>
-                    <h1 style={{fontSize:20 ,color:"#00008B", left:500, position:"absolute", top:-3}}>Sunday to Friday(9.00am-10.00pm)</h1>
+                    <img src={car9} style={{ position:"absolute",top:8, left:200,height:30,width:30}}/>
+                    <img src={clo} style={{ position:"absolute",top:8, left:670,height:30,width:30}}/>
+                    <h1 style={{fontSize:20 ,color:"white", left:300, position:"absolute", top:-3}}>Sunday to Friday(9.00am-10.00pm)</h1>
+                    {/*<img src={car12} style={{position:"absolute", top:2, left:2}}/>*/}
+                    {/*<h1 style={{color:"#00008B", left:60, position:"absolute", top:-20}}>Royal Car Service</h1>*/}
+                    {/*<img src={clock} style={{ position:"absolute",top:8, left:460,height:30,width:30}}/>*/}
+                    {/*<h1 style={{fontSize:20 ,color:"#00008B", left:500, position:"absolute", top:-3}}>Sunday to Friday(9.00am-10.00pm)</h1>*/}
                 </Grid>
 
 
