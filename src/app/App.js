@@ -1,5 +1,5 @@
 import React from "react";
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, BrowserRouter} from "react-router-dom";
 
 import Customer from "../pages/sessions/ManageCustomer"
 
@@ -28,7 +28,7 @@ import ViewSchedule from "../pages/sessions/ViewDriverDetails";
 
 function App() {
     return (
-
+        <BrowserRouter>
         <Routes>
             <Route exact path='/' element={<Home/>}/>
             <Route path="customer" element={<Customer/>}/>
@@ -51,6 +51,7 @@ function App() {
             <Route path="dashdriver" element={<DashDriver/>}/>
             <Route path="viewSchedule" element={<ViewDriverDetails/>}/>
         </Routes>
+        </BrowserRouter>
     );
 }
 
