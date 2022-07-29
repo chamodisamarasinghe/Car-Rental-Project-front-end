@@ -4,13 +4,15 @@ import './index.css';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import axios from "axios";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+axios.defaults.baseURL = process.env.BASE_URL;
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
+
             <App />
-        </BrowserRouter>
+
     </React.StrictMode>
 );
 

@@ -14,7 +14,7 @@ export default function HomeDashNav() {
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1,fontWeight:"bold" }}>
                         Easy Car Rental
                     </Typography>
 
@@ -25,16 +25,16 @@ export default function HomeDashNav() {
 
 
                     <Link href="aboutus" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:2}}>About Us</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:4}}>About Us</Button>
                     </Link>
 
                     <Link href="admindashboard" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:4}}>Admin</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:5}}>Admin</Button>
                     </Link>
 
 
                     <Link href="customerdashboard" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:6}}>Customer</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:7}}>Customer</Button>
                     </Link>
 
                     <Link href="dashdriver" underline="none">
