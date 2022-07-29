@@ -1,36 +1,42 @@
-import axios from "../axios";
+import axios from "axios";
 
 class DriverService {
-    postDriver = async (data) => {
+
+    baseURL = "http://localhost:8080/backEnd/api/v1/";
+
+    addDriver = async (data) => {
         const promise = new Promise((resolve, reject) => {
-            axios.post('driver', data)    // 20s
+            axios.post(`${this.baseURL}admin/driver`, data)
                 .then((res) => {
                     return resolve(res)
                 })
-                .catch((err) => {
-                    return resolve(err)
-                })
-        });
-
-        return await promise;
-    }
-
-    fetchDriver = async () => {
-        const promise = new Promise((resolve, reject) => {
-            axios.get('driver')
-                .then((res) => {
-                    return resolve(res)
-                })
-                .catch((err) => {
-                    return resolve(err)
+                .catch((er) => {
+                    return resolve(er)
                 })
         })
-        return await promise;
+        return await promise
     }
+
 
     putDriver = async (data) => {
         const promise = new Promise((resolve, reject) => {
-            axios.put('driver', data)
+            axios.put(`${this.baseURL}admin/driver`, data)
+                .then((res) => {
+
+                    return resolve(res)
+                })
+                .catch((er) => {
+                    return resolve(er)
+                })
+        })
+        return await promise;
+    };
+
+
+
+    deleteDriver = async (params) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.delete(`${this.baseURL}admin/driver`, {params: params})
                 .then((res) => {
                     return resolve(res)
                 })
@@ -41,9 +47,11 @@ class DriverService {
         return await promise;
     };
 
-    deleteDriver = async (params) => {
+
+
+    fetchDriver = async () => {
         const promise = new Promise((resolve, reject) => {
-            axios.delete('driver', {params: params})
+            axios.get(`${this.baseURL}admin/driver`)
                 .then((res) => {
                     return resolve(res)
                 })
@@ -52,6 +60,11 @@ class DriverService {
                 })
         })
         return await promise;
-    };
+    }
+
+
+
+
 }
-export default new DriverService();
+
+export default new DriverService()
