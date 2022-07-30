@@ -1,36 +1,42 @@
-import axios from "../axios";
+import axios from "axios";
 
 class CustomerService {
-    postCustomer = async (data) => {
+
+    baseURL = "http://localhost:8080/backEnd/api/v1/";
+
+    addCustomer = async (data) => {
         const promise = new Promise((resolve, reject) => {
-            axios.post('customer', data)    // 20s
+            axios.post(`${this.baseURL}customer`, data)
                 .then((res) => {
                     return resolve(res)
                 })
-                .catch((err) => {
-                    return resolve(err)
-                })
-        });
-
-        return await promise;
-    }
-
-    fetchCustomer = async () => {
-        const promise = new Promise((resolve, reject) => {
-            axios.get('customer')
-                .then((res) => {
-                    return resolve(res)
-                })
-                .catch((err) => {
-                    return resolve(err)
+                .catch((er) => {
+                    return resolve(er)
                 })
         })
-        return await promise;
+        return await promise
     }
+
 
     putCustomer = async (data) => {
         const promise = new Promise((resolve, reject) => {
-            axios.put('customer', data)
+            axios.put(`${this.baseURL}customer`, data)
+                .then((res) => {
+
+                    return resolve(res)
+                })
+                .catch((er) => {
+                    return resolve(er)
+                })
+        })
+        return await promise;
+    };
+
+
+
+    deleteCustomer = async (params) => {
+        const promise = new Promise((resolve, reject) => {
+            axios.delete(`${this.baseURL}customer`, {params: params})
                 .then((res) => {
                     return resolve(res)
                 })
@@ -41,9 +47,11 @@ class CustomerService {
         return await promise;
     };
 
-    deleteCustomer = async (params) => {
+
+
+    fetchCustomer = async () => {
         const promise = new Promise((resolve, reject) => {
-            axios.delete('customer', {params: params})
+            axios.get(`${this.baseURL}customer`)
                 .then((res) => {
                     return resolve(res)
                 })
@@ -52,6 +60,11 @@ class CustomerService {
                 })
         })
         return await promise;
-    };
+    }
+
+
+
+
 }
-export default new CustomerService();
+
+export default new CustomerService()
