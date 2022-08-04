@@ -108,18 +108,18 @@ const headCells = [
         disablePadding: true,
         label: 'License No',
     },
-    {
-        id: 'username',
-        numeric: false,
-        disablePadding: true,
-        label: 'User_Name',
-    },
-    {
-        id: 'password',
-        numeric: false,
-        disablePadding: true,
-        label: 'Pass_word',
-    },
+    // {
+    //     id: 'username',
+    //     numeric: false,
+    //     disablePadding: true,
+    //     label: 'User_Name',
+    // },
+    // {
+    //     id: 'password',
+    //     numeric: false,
+    //     disablePadding: true,
+    //     label: 'Pass_word',
+    // },
     {
         id: 'isAvailable',
         numeric: false,
@@ -644,16 +644,16 @@ const ViewDriver = ({}) => {
                                                                    padding="none">{row.licenseNo}
                                                         </TableCell>
 
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.username}
-                                                        </TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.password}
-                                                        </TableCell>
+                                                        {/*<TableCell component="th"*/}
+                                                        {/*           id={labelId}*/}
+                                                        {/*           scope="row"*/}
+                                                        {/*           padding="none">{row.username}*/}
+                                                        {/*</TableCell>*/}
+                                                        {/*<TableCell component="th"*/}
+                                                        {/*           id={labelId}*/}
+                                                        {/*           scope="row"*/}
+                                                        {/*           padding="none">{row.password}*/}
+                                                        {/*</TableCell>*/}
 
                                                         <TableCell component="th"
                                                                    id={labelId}
