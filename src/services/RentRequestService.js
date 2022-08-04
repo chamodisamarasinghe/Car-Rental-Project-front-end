@@ -1,6 +1,6 @@
 import axios from "../axios";
 
-class RentService {
+class RentRequestService {
     postRent = async (data) => {
         const promise = new Promise((resolve, reject) => {
             axios.post('rent', data)    // 20s
@@ -54,4 +54,4 @@ class RentService {
         return await promise;
     };
 }
-export default new RentService();
+export default new RentRequestService();

@@ -24,6 +24,8 @@ import ViewDriverDetails from "../pages/sessions/ViewDriverDetails";
 
 import DashDriver from "../pages/sessions/DashDriver";
 import ViewSchedule from "../pages/sessions/ViewDriverDetails";
+import ManageCustomer from "../pages/sessions/ManageCustomer";
+
 
 
 function App() {
@@ -31,7 +33,7 @@ function App() {
         <BrowserRouter>
         <Routes>
             <Route exact path='/' element={<Home/>}/>
-            <Route path="customer" element={<Customer/>}/>
+            {/*<Route path="customer" element={<Customer/>}/>*/}
             <Route path="driver" element={<Driver/>}/>
             <Route path="addcar" element={<AddCar/>}/>
             <Route path="sidebar" element={<Sidebar/>}/>
@@ -48,7 +50,7 @@ function App() {
             <Route path="viewRequest" element={<ViewRequest/>}/>
             <Route path="dashdriver" element={<DashDriver/>}/>
             <Route path="viewSchedule" element={<ViewDriverDetails/>}/>
-
+            <Route path="customerManage" element={<ManageCustomer/>}/>
         </Routes>
         </BrowserRouter>
     );
