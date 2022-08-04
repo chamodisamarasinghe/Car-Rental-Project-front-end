@@ -126,24 +126,24 @@ const headCells = [
         disablePadding: true,
         label: 'Is_Available',
     },
-    {
-        id: 'update',
-        numeric: false,
-        disablePadding: true,
-        label: 'Update',
-    },
-    {
-        id: 'deleted',
-        numeric: false,
-        disablePadding: true,
-        label: 'Delete',
-    },
-    {
-        id: 'maintain',
-        numeric: false,
-        disablePadding: true,
-        label: 'Maintain',
-    },
+    // {
+    //     id: 'update',
+    //     numeric: false,
+    //     disablePadding: true,
+    //     label: 'Update',
+    // },
+    // {
+    //     id: 'deleted',
+    //     numeric: false,
+    //     disablePadding: true,
+    //     label: 'Delete',
+    // },
+    // {
+    //     id: 'maintain',
+    //     numeric: false,
+    //     disablePadding: true,
+    //     label: 'Maintain',
+    // },
 
 ];
 
@@ -567,15 +567,15 @@ const ViewDriver = ({}) => {
                             Search
                         </Button>
 
-                        <Button color={btnColor} size="medium" type="submit" variant="contained"
-                                sx={{ml: 3, mt: -13}}>
-                            {btnLabel}
-                        </Button>
+                        {/*<Button color={btnColor} size="medium" type="submit" variant="contained"*/}
+                        {/*        sx={{ml: 3, mt: -13}}>*/}
+                        {/*    {btnLabel}*/}
+                        {/*</Button>*/}
 
-                        <Button onClick={clearFields} type="reset" variant="contained" color="success"
-                                sx={{ml: 3, mt: -13}}>
-                            Reset
-                        </Button>
+                        {/*<Button onClick={clearFields} type="reset" variant="contained" color="success"*/}
+                        {/*        sx={{ml: 3, mt: -13}}>*/}
+                        {/*    Reset*/}
+                        {/*</Button>*/}
                     </div>
                     {/*cartable open*/}
                     <Box sx={{width: '100%'}}>
@@ -660,38 +660,38 @@ const ViewDriver = ({}) => {
                                                                    scope="row"
                                                                    padding="none">{row.isAvailable}
                                                         </TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.update}
-                                                            <IconButton onClick={() => {
-                                                                updateDriver(row);
-                                                            }} color="info" aria-label="update" component="label">
-                                                                <CreateIcon/>
-                                                            </IconButton>
+                                                        {/*<TableCell component="th"*/}
+                                                        {/*           id={labelId}*/}
+                                                        {/*           scope="row"*/}
+                                                        {/*           padding="none">{row.update}*/}
+                                                        {/*    <IconButton onClick={() => {*/}
+                                                        {/*        updateDriver(row);*/}
+                                                        {/*    }} color="info" aria-label="update" component="label">*/}
+                                                        {/*        <CreateIcon/>*/}
+                                                        {/*    </IconButton>*/}
 
-                                                        </TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.delete}
+                                                        {/*</TableCell>*/}
+                                                        {/*<TableCell component="th"*/}
+                                                        {/*           id={labelId}*/}
+                                                        {/*           scope="row"*/}
+                                                        {/*           padding="none">{row.delete}*/}
 
-                                                            <IconButton onClick={() => deleteDriver(row.did)}
-                                                                        color="error" aria-label="delete"
-                                                                        component="label">
-                                                                <DeleteIcon/>
-                                                            </IconButton>
-                                                        </TableCell>
+                                                        {/*    <IconButton onClick={() => deleteDriver(row.did)}*/}
+                                                        {/*                color="error" aria-label="delete"*/}
+                                                        {/*                component="label">*/}
+                                                        {/*        <DeleteIcon/>*/}
+                                                        {/*    </IconButton>*/}
+                                                        {/*</TableCell>*/}
 
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.maintain}
-                                                            <IconButton color="secondary" aria-label="maintain"
-                                                                        component="label">
-                                                                <ConstructionIcon/>
-                                                            </IconButton>
-                                                        </TableCell>
+                                                        {/*<TableCell component="th"*/}
+                                                        {/*           id={labelId}*/}
+                                                        {/*           scope="row"*/}
+                                                        {/*           padding="none">{row.maintain}*/}
+                                                        {/*    <IconButton color="secondary" aria-label="maintain"*/}
+                                                        {/*                component="label">*/}
+                                                        {/*        <ConstructionIcon/>*/}
+                                                        {/*    </IconButton>*/}
+                                                        {/*</TableCell>*/}
                                                     </TableRow>
                                                 );
                                             })}
