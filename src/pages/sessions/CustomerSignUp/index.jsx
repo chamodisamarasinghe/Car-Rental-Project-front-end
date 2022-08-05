@@ -11,7 +11,8 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 // import {showToast} from "../Admin/Car";
 import CustomerService from "../../../services/CustomerService";
 import {showToast} from "../AddCar";
-
+import ToastContainer from "react-bootstrap/ToastContainer";
+const sign = new URL("../../../assets/sign.png",import.meta.url)
 const SignUp = () => {
     const paperStyle = {padding: 20, height: '70vh', width: 350, margin: "20px auto"}
     const paperStyleContainer = {
@@ -59,7 +60,6 @@ const SignUp = () => {
         /**
          * Exta data
          * */
-        name: "",
         isRegistered: false,
         isDriverRequested: false,
         isAccept: false
@@ -103,7 +103,7 @@ const SignUp = () => {
             email: "",
             password: "",
             address: "",
-            contactNo: 0,
+            contactNo: "",
             nicNo: "",
             nicImg: "",
             licenceNo: "",
@@ -120,7 +120,7 @@ const SignUp = () => {
         let res = await CustomerService.registerCustomer(formValues);
         console.log(res.status)
 
-        console.log("res Status", res.data)
+        console.log("res Status", res)
         if (res.data.code === 200) {
 
             setStatus({
@@ -146,10 +146,12 @@ const SignUp = () => {
 
     return (
         <Grid>
+            <ToastContainer/>
             <Paper elevation={10} style={paperStyleContainer}>
                 <Grid align='center'>
-                    <Avatar style={avatarStyle}><LockOpenIcon/></Avatar>
-                    <h2>Sign Up</h2>
+                    <img src={sign} />
+                    {/*<Avatar style={avatarStyle}><LockOpenIcon/></Avatar>*/}
+                    <h2 style={{color:"#00008B"}}>Sign Up</h2>
                 </Grid>
 
                 <Box

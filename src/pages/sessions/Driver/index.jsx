@@ -24,19 +24,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminDashNav from "../AdminDashBoard/adminDashNav";
 const defaultPosition = toast.POSITION.BOTTOM_CENTER;
 
-function createData(did, name, address, contactNo, nicNo, licenseNo, username,password,update, deleted, maintain) {
+function createData(did, name, address, contactNo, nicNo, licenseNo, username,password,update, deleted) {
     return {
         did,
         name,
         address,
         contactNo,
         nicNo,
-        // licenseNo,
-        // username,
-        // password,
+        licenseNo,
+        username,
+        password,
         update,
-        deleted,
-        maintain
+        deleted
     };
 }
 
@@ -101,29 +100,23 @@ const headCells = [
         disablePadding: true,
         label: 'NIC',
     },
-    // {
-    //     id: 'licenseNo',
-    //     numeric: false,
-    //     disablePadding: true,
-    //     label: 'License No',
-    // },
-    // {
-    //     id: 'username',
-    //     numeric: false,
-    //     disablePadding: true,
-    //     label: 'User_Name',
-    // },
-    // {
-    //     id: 'password',
-    //     numeric: false,
-    //     disablePadding: true,
-    //     label: 'Pass_word',
-    // },
     {
-        id: 'isAvailable',
+        id: 'licenseNo',
         numeric: false,
         disablePadding: true,
-        label: 'Is_Available',
+        label: 'License No',
+    },
+    {
+        id: 'username',
+        numeric: false,
+        disablePadding: true,
+        label: 'User_Name',
+    },
+    {
+        id: 'password',
+        numeric: false,
+        disablePadding: true,
+        label: 'Pass_word',
     },
     {
         id: 'update',
@@ -136,12 +129,6 @@ const headCells = [
         numeric: false,
         disablePadding: true,
         label: 'Delete',
-    },
-    {
-        id: 'maintain',
-        numeric: false,
-        disablePadding: true,
-        label: 'Maintain',
     },
 
 ];
@@ -229,12 +216,11 @@ const Driver = ({}) => {
         contactNo: "",
         nicNo: "",
         licenseNo: "",
-
+        username: "",
+        password: "",
         /**
          * Exta data
          * */
-        username: "",
-        password: "",
         isAvailable: false,
     };
 
@@ -277,11 +263,13 @@ const Driver = ({}) => {
 
         setFormValues({
             did: "",
+            nicNo: "",
             name: "",
+            licenseNo: "",
             address: "",
             contactNo: "",
-            nicNo: "",
-            licenseNo: "",
+            username: "",
+            password: "",
 
         });
     };
@@ -386,6 +374,8 @@ const Driver = ({}) => {
             contactNo: data.contactNo,
             nicNo: data.nicNo,
             licenseNo: data.licenseNo,
+            username: data.username,
+            password: data.password,
 
 
         });
@@ -407,8 +397,7 @@ const Driver = ({}) => {
         const newArr2 = []
         for (let i = 0; i < td.length; i++) {
             newArr2.push((createData(
-                td[i].did,
-                td[i].name, td[i].address, td[i].contactNo, td[i].nicNo, td[i].licenseNo, td[i].username, td[i].password
+                td[i].did,td[i].name,td[i].address,td[i].contactNo,td[i].nicNo, td[i].licenseNo, td[i].username,td[i].password
             )))
         }
         console.log("new Arra", newArr2)
@@ -515,6 +504,26 @@ const Driver = ({}) => {
                             name="contactNo"
                             onChange={handleInputChange}
                             value={formValues.contactNo}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            helperText="Enter UserName"
+                            id="demo-helper-text-aligned"
+                            label="UserName"
+                            name="username"
+                            onChange={handleInputChange}
+                            value={formValues.username}
+                        />
+                    </Grid>
+                    <Grid item>
+                        <TextField
+                            helperText="Enter Password"
+                            id="demo-helper-text-aligned"
+                            label="Password"
+                            name="password"
+                            onChange={handleInputChange}
+                            value={formValues.password}
                         />
                     </Grid>
                     <Grid item>
@@ -637,22 +646,22 @@ const Driver = ({}) => {
                                                                    scope="row"
                                                                    padding="none">{row.nicNo}
                                                         </TableCell>
-                                                        {/*<TableCell component="th"*/}
-                                                        {/*           id={labelId}*/}
-                                                        {/*           scope="row"*/}
-                                                        {/*           padding="none">{row.licenseNo}*/}
-                                                        {/*</TableCell>*/}
+                                                        <TableCell component="th"
+                                                                   id={labelId}
+                                                                   scope="row"
+                                                                   padding="none">{row.licenseNo}
+                                                        </TableCell>
 
-                                                        {/*<TableCell component="th"*/}
-                                                        {/*           id={labelId}*/}
-                                                        {/*           scope="row"*/}
-                                                        {/*           padding="none">{row.username}*/}
-                                                        {/*</TableCell>*/}
-                                                        {/*<TableCell component="th"*/}
-                                                        {/*           id={labelId}*/}
-                                                        {/*           scope="row"*/}
-                                                        {/*           padding="none">{row.password}*/}
-                                                        {/*</TableCell>*/}
+                                                        <TableCell component="th"
+                                                                   id={labelId}
+                                                                   scope="row"
+                                                                   padding="none">{row.username}
+                                                        </TableCell>
+                                                        <TableCell component="th"
+                                                                   id={labelId}
+                                                                   scope="row"
+                                                                   padding="none">{row.password}
+                                                        </TableCell>
 
                                                         <TableCell component="th"
                                                                    id={labelId}
@@ -682,15 +691,7 @@ const Driver = ({}) => {
                                                             </IconButton>
                                                         </TableCell>
 
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.maintain}
-                                                            <IconButton color="secondary" aria-label="maintain"
-                                                                        component="label">
-                                                                <ConstructionIcon/>
-                                                            </IconButton>
-                                                        </TableCell>
+
                                                     </TableRow>
                                                 );
                                             })}

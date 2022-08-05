@@ -10,12 +10,20 @@ import Reg from "../../../assets/reg.jpg"
 import Book from "../../../assets/book.jpg"
 import Driver from "../../../assets/d.jpg"
 import Maintain from "../../../assets/main.jpg"
+import AdminDashNav from "../AdminDashBoard/adminDashNav";
 
 const DailySummary = ({}) => {
 
 
     return (
         <div>
+            <Grid >
+                <AdminDashNav/>
+
+            </Grid>
+
+
+
             <Grid item lg={12} xs={12} sm={12} md={12}>
                 <Typography variant="h3" style={{marginLeft:590, marginTop:30, color:"#00008B", fontWeight:"bold", fontSize:60,fontFamily: "Times New Roman"}}>Summary</Typography>
             </Grid>

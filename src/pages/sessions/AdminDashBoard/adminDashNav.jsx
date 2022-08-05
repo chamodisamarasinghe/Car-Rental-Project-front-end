@@ -18,9 +18,13 @@ export default function AdminDashNav() {
                         Easy Car Rental
                     </Typography>
 
+                    <Link href="/" underline="none">
+                        <Button  color='primary' variant="contained" >Home</Button>
+                    </Link>
+
 
                     <Link href="customerManage" underline="none">
-                        <Button  color='primary' variant="contained">Manage Customer</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:1}}>Manage Customer</Button>
                     </Link>
 
 
@@ -29,21 +33,22 @@ export default function AdminDashNav() {
                     </Link>
 
                     <Link href="addcar" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:4}}>Manage Car</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:3}}>Manage Car</Button>
                     </Link>
 
 
                     <Link href="viewRequest" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:6}}>View Rental Request</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:4}}>View Rental Request</Button>
                     </Link>
 
                     <Link href="income" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:8}}>Income</Button>
+                        <Button  color='primary' variant="contained" sx={{ml:5}}>Income</Button>
                     </Link>
 
-                    <Link href="/" underline="none">
-                        <Button  color='primary' variant="contained" sx={{ml:10}}>Home</Button>
+                    <Link href="summary" underline="none">
+                        <Button  color='primary' variant="contained" sx={{ml:6}}>Daily Summary</Button>
                     </Link>
+
                 </Toolbar>
             </AppBar>
         </Box>

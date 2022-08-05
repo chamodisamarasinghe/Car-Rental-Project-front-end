@@ -1,52 +1,45 @@
 import React, {useEffect, useState} from 'react'
-import TextField from "@mui/material/TextField";
-import {Box, Button, Grid, IconButton} from "@mui/material";
-import CustomerService from "../../../services/CustomerService";
-import SearchIcon from '@mui/icons-material/Search';
-import InputBase from '@mui/material/InputBase';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
+import {Grid, IconButton} from "@mui/material";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+// import RubberBtn from "../../component/common/RubberBandBtn";
+import AdminService from "../../../services/AdminService";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableSortLabel from "@mui/material/TableSortLabel";
+import {visuallyHidden} from "@mui/utils";
+import PropTypes from "prop-types";
 import Paper from "@mui/material/Paper";
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import CreateIcon from "@mui/icons-material/Create";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ConstructionIcon from "@mui/icons-material/Construction";
 import TablePagination from "@mui/material/TablePagination";
-import TableHead from "@mui/material/TableHead";
-import TableSortLabel from "@mui/material/TableSortLabel";
-import {visuallyHidden} from "@mui/utils";
-import PropTypes from "prop-types";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import CustomerService from "../../../services/CustomerService";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import AdminDashNav from "../AdminDashBoard/adminDashNav";
-import CustomerDashNav from "../CustomerDashBoard/customerDashNav";
+
 const defaultPosition = toast.POSITION.BOTTOM_CENTER;
 
-function createData(rentId, pickUpDate, pickUpTime, returnDate, returnTime, slipFile, carType, nicNo,   update, deleted, maintain) {
+
+function createData(email, password, nicNo, nicImg, licenceNo, licenceImg, address, contactNo, isAccept) {
     return {
-        rentId,
-        pickUpDate,
-        pickUpTime,
-        returnDate,
-        returnTime,
-        slipFile,
-        carType,
+        email,
+        password,
         nicNo,
-        update,
-        deleted,
-        maintain
+        nicImg,
+        licenceNo,
+        licenceImg,
+        address,
+        contactNo,
+        isAccept
     };
 }
-const rows = [
-    createData("1234567", "Praboda", "ABC123", "1", "3000", "2022.07.24"),
-    createData("7654321", "Sadali", "ABC456", "1", "4000", "2022.07.23"),
-    createData("6543218", "Geethika", "ABC789", "2", "6000", "2022.07.24"),
-    createData("5432198", "Anupama", "DEF123", "3", "10000", "2022.07.24")
-];
-
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -64,7 +57,6 @@ function getComparator(order, orderBy) {
         : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-
 function stableSort(array, comparator) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
@@ -79,79 +71,58 @@ function stableSort(array, comparator) {
 
 const headCells = [
     {
-        id: 'rentId',
+        id: 'email',
         numeric: false,
         disablePadding: true,
-        label: 'RentId',
+        label: 'Email',
     },
     {
-        id: 'pickUpDate',
+        id: 'password',
         numeric: false,
         disablePadding: true,
-        label: 'Pick_UP_Date',
+        label: 'New Password',
     },
-    {
-        id: 'pickUpTime',
-        numeric: false,
-        disablePadding: true,
-        label: 'Pick_Up_Time',
-    },
-    {
-        id: 'returnDate',
-        numeric: false,
-        disablePadding: true,
-        label: 'Return_date',
-    },
-    {
-        id: 'returnTime',
-        numeric: false,
-        disablePadding: true,
-        label: 'Return_time',
-    },
-    {
-        id: 'slipFile',
-        numeric: false,
-        disablePadding: true,
-        label: 'Slip_file',
-    },
-    {
-        id: 'carType',
-        numeric: false,
-        disablePadding: true,
-        label: 'Car_type',
-    },
-
     {
         id: 'nicNo',
         numeric: false,
         disablePadding: true,
-        label: 'NIC',
-    },
-
-    {
-        id: 'isDriver',
-        numeric: false,
-        disablePadding: true,
-        label: 'Is_Driver',
-    },
-
-    {
-        id: 'update',
-        numeric: false,
-        disablePadding: true,
-        label: 'Update',
+        label: 'NIC Number',
     },
     {
-        id: 'deleted',
+        id: 'nicImg',
         numeric: false,
         disablePadding: true,
-        label: 'Delete',
+        label: 'NIC Photos',
     },
     {
-        id: 'maintain',
+        id: 'licenceNo',
         numeric: false,
         disablePadding: true,
-        label: 'Maintain',
+        label: 'Driving License Number',
+    },
+    {
+        id: 'licenceImg',
+        numeric: false,
+        disablePadding: true,
+        label: 'Driving License Photo',
+    },
+    {
+        id: 'address',
+        numeric: false,
+        disablePadding: true,
+        label: 'Address',
+    },
+    {
+        id: 'contactNo',
+        numeric: false,
+        disablePadding: true,
+        label: 'Contact Number',
+    },
+    {
+        id: 'isAccept',
+        numeric: false,
+        disablePadding: true,
+        label: 'Accept',
     },
 ];
 
@@ -161,10 +132,11 @@ function EnhancedTableHead(props) {
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
-
-
     return (
+
+
         <TableHead>
+
             <TableRow>
                 <TableCell padding="checkbox">
 
@@ -213,7 +185,7 @@ EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-export const showToast = ( type = "success", msg, autoClose = 2000, className = "primaryColor", position = defaultPosition ) => {
+export const showToast = (type = "success", msg, autoClose = 2000, className = "primaryColor", position = defaultPosition) => {
     if (type === "success") {
         toast.success(msg, {
             autoClose: autoClose === null ? 2000 : autoClose,
@@ -228,23 +200,28 @@ export const showToast = ( type = "success", msg, autoClose = 2000, className = 
         });
     }
 };
+
+
 const ManageCustomer = ({}) => {
 
     const initialValues = {
-
-        rentId:"",
-        pickUpDate:"",
-        pickUpTime:'',
-        returnDate:"",
-        returnTime:"",
-        slipFile:"",
-        carType:"",
-        nicNo:"",
+        email: "",
+        password: "",
+        address: "",
+        contactNo: 0,
+        nicNo: "",
+        nicImg: "",
+        licenceNo: "",
+        licenceImg: "",
+        username: "",
+        isAccept: false,
         /**
          * Exta data
          * */
-
-        isDriver: false,
+        name: "",
+        isRegistered: false,
+        isDriverRequested: false,
+        // isAccept: false
     };
 
     const statusObj = {
@@ -253,109 +230,27 @@ const ManageCustomer = ({}) => {
         severity: '',
     }
 
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setFormValues({
-            ...formValues,
-            [name]: value,
-        });
-    };
-
-
     const [formValues, setFormValues] = useState(initialValues);
 
     const [status, setStatus] = useState(statusObj);
 
-    const [btnLabel, setBtnLabel] = useState('Add Customer');
-
-    const [btnColor, setBtnColor] = useState('primary');
-
     const [tblData, setTblData] = useState([]);
+
+    const [open, setOpen] = useState(false);
+    const [isOk, setOk] = useState(false);
+
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
 
     useEffect(() => {
         loadData();
     }, [])
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        await submitCustomer();
-    }
-
-    const clearFields = () => {
-
-        setFormValues({
-            rentId:"",
-            pickUpDate:"",
-            pickUpTime:'',
-            returnDate:"",
-            returnTime:"",
-            slipFile:"",
-            carType:"",
-            nicNo:"",
-
-        });
-    };
-
-    const submitCustomer = async () => {
-
-        let dto = {};
-        dto = formValues;
-
-        if (btnLabel === "Add Customer") {
-            let res = await CustomerService.addCustomer(dto);//customer service --> postCustomer()
-            console.log(res.status)
-
-            console.log("res Status", res.data)
-            if (res.data.code === 200) {
-
-                setStatus({
-                    alert: true,
-                    message: "S",
-                    severity: 'success'
-                })
-                showToast('success', 'saved successfully !');
-
-                loadData();
-                clearFields();
-
-            } else  {
-                setStatus({
-                    alert: true,
-                    message: "E",
-                    severity: 'error'
-                });
-                console.log("not Equal")
-                showToast('error', 'Not Saved');
-            }
-        } else {
-            let res = await CustomerService.putCar(formValues);//customer service --> putCustomer()
-            if (res.status === 200) {
-                setStatus({
-                    alert: true,
-                    message: "s",
-                    severity: 'success',
-                });
-                loadData();
-                showToast('success', 'update successfully !');
-                setBtnLabel("Add Customer");
-                setBtnColor('primary')
-                clearFields();
-
-            } else {
-                setStatus({
-                    alert: true,
-                    message: "e",
-                    severity: 'error'
-                });
-                showToast('error', 'Not Updated');
-            }
-        }
-    };
-
-
     const loadData = async () => {
-        CustomerService.fetchCustomer().then((res) => {
+        CustomerService.fetchPendingCustomers().then((res) => {
             if (res.status === 200) {
                 setTblData(res.data.data)
                 setDataToRows(res.data.data)
@@ -363,11 +258,10 @@ const ManageCustomer = ({}) => {
         });
     };
 
-    const deleteCustomer = async (id) => {
-        let params = {
-            rentId: id
-        }
-        let res = await CustomerService.deleteCustomer(params);
+
+
+    const acceptRequest = async (isAccepted, nicNo) => {
+        let res = await AdminService.customerAccept("ACCEPTED", nicNo);
 
         if (res.status === 200) {
             setStatus({
@@ -375,7 +269,8 @@ const ManageCustomer = ({}) => {
                 message: res.data.message,
                 severity: 'success'
             });
-            showToast('success', 'successfully Deleted!');
+            showToast('success', 'successfully Accepted!');
+            setOk(false);
             loadData()
         } else {
             setStatus({
@@ -383,24 +278,10 @@ const ManageCustomer = ({}) => {
                 message: res.data.message,
                 severity: 'error'
             });
-            showToast('error', 'Not Deleted');
+            showToast('error', 'Error');
+            setOk(false);
         }
-    };
 
-    const updateCustomer = async (data) => {
-        setBtnLabel("Update Customer");
-        setBtnColor('secondary')
-        setFormValues({
-            rentId:data.rentId,
-            pickUpDate: data.pickUpDate,
-            pickUpTime: data.pickUpTime,
-            returnDate: data.returnDate,
-            returnTime: data.returnTime,
-            slipFile: data.slipFile,
-            carType: data.carType,
-            nicNo: data.nicNo,
-
-        });
     };
 
 
@@ -412,20 +293,23 @@ const ManageCustomer = ({}) => {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [rows, setRows] = useState([]);
 
-
     const setDataToRows = (td) => {
-
         console.log("tablemap", td);
         const newArr2 = []
         for (let i = 0; i < td.length; i++) {
             newArr2.push((createData(
-                td[i].rentId,
-                td[i].pickUpDate, td[i].pickUpTime, td[i].returnDate, td[i].returnTime, td[i].slipFile, td[i].carType, td[i].nicNo
+                td[i].email, td[i].password, td[i].nicNo, td[i].nicImg, td[i].licenceNo, td[i].licenceImg, td[i].address, td[i].contactNo, td[i].isAccept
             )))
         }
         console.log("new Arra", newArr2)
         setRows(newArr2)
-
+        // td.map((data) => (
+        //     setRows(createData(
+        //         data.registrationNO, data.brand, data.type, data.noOfPassengers, data.transmissionType, data.fuelType, data.color, data.frontViewImg,
+        //         data.backViewImg, data.sideViewImg, data.internalViewImg, data.dailyRate, data.monthlyRate, data.freeKmForPrice, data.freeKmForDuration,
+        //         data.lossDamageWaiver, data.priceForExtraKm, data.completeKm,"update","deleted","maintain"
+        //     ))
+        // ))
 
     };
 
@@ -444,7 +328,6 @@ const ManageCustomer = ({}) => {
         setSelected([]);
     };
 
-
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -457,24 +340,28 @@ const ManageCustomer = ({}) => {
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
-
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-    // car
+    const clearFields = () => {
+        setFormValues({
+            search: ""
+        });
+    };
 
 
     return (
+
         <div>
-            <ToastContainer />
-            <Grid>
-                <AdminDashNav/>
+            <Grid item lg={12} xs={12} sm={12} md={12}>
+                <Grid>
+                    <AdminDashNav/>
+                </Grid>
             </Grid>
             <Divider/>
 
             <Box
                 component="form"
-                onSubmit={handleSubmit}
                 sx={{
                     '& > :not(style)': {},
                 }}
@@ -482,97 +369,10 @@ const ManageCustomer = ({}) => {
                 autoComplete="off"
             >
 
-                <Grid container alignItems="center" justify="center" direction="row" spacing={2}
-                      sx={{paddingLeft: 5, mt: 5}}
-                >
-                    {/*<Grid item>*/}
-                    {/*    <TextField id="outlined-basic" label="Rent Id" variant="outlined"*/}
-                    {/*               helperText="Enter RentId" name="rentId"*/}
-                    {/*               onChange={handleInputChange} validators={['required']}*/}
-                    {/*               value={formValues.rentId}/>*/}
-                    {/*</Grid>*/}
-                    {/*<Grid item>*/}
-
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter Pick_UpDate"*/}
-                    {/*        variant="outlined"*/}
-                    {/*        id="outlined-basic"*/}
-                    {/*        label="Pick_UpDate"*/}
-                    {/*        name="pickUpDate"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.pickUpDate}*/}
-                    {/*    />*/}
-
-                    {/*</Grid>*/}
-                    {/*<Grid item>*/}
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter Pick_UpTime"*/}
-                    {/*        id="outlined-basic"*/}
-                    {/*        label="Pick_UpTime"*/}
-                    {/*        name="pickUpTime"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.pickUpTime}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
-
-                    {/*<Grid item>*/}
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter Return_date"*/}
-                    {/*        id="demo-helper-text-aligned"*/}
-                    {/*        label=" Return_date"*/}
-                    {/*        name="returnDate"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.returnDate}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
-                    {/*<Grid item>*/}
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter Return_Time"*/}
-                    {/*        id="demo-helper-text-aligned"*/}
-                    {/*        label="Return_Time"*/}
-                    {/*        name="returnTime"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.returnTime}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
-                    {/*<Grid item>*/}
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter Slip_File"*/}
-                    {/*        id="demo-helper-text-aligned"*/}
-                    {/*        label="Slip_File"*/}
-                    {/*        name="slipFile"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.slipFile}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
-                    {/*<Grid item>*/}
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter Car Type"*/}
-                    {/*        id="demo-helper-text-aligned"*/}
-                    {/*        label="Car Type"*/}
-                    {/*        name="carType"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.carType}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
-                    {/*<Grid item>*/}
-                    {/*    <TextField*/}
-                    {/*        helperText="Enter NIC"*/}
-                    {/*        id="demo-helper-text-aligned"*/}
-                    {/*        label="NIC"*/}
-                    {/*        name="nicNo"*/}
-                    {/*        onChange={handleInputChange}*/}
-                    {/*        value={formValues.nicNo}*/}
-                    {/*    />*/}
-                    {/*</Grid>*/}
-
-
-                </Grid>
                 <InputBase
-                    id="outlined-basic"
                     sx={{ml: 10, mt: 5, flex: 1}}
-                    placeholder="Search RentId"
-                    inputProps={{'aria-label': 'search RentId'}}
+                    placeholder="Search NIC Number"
+                    inputProps={{'aria-label': 'search NIC Number'}}
                     variant="standard"
                 />
                 <IconButton type="submit" sx={{p: '20px'}} aria-label="search">
@@ -580,22 +380,19 @@ const ManageCustomer = ({}) => {
                 </IconButton>
                 <div>
                     <div>
-                        <Button color="secondary" size="medium" type="submit" variant="contained"
-                                sx={{ml: 45, mt: -13}}>
+                        <Button
+                            color="secondary" size="medium" variant="contained"
+                            value={formValues.search}
+                            sx={{ml: 45, mt: -13}}>
                             Search
                         </Button>
 
-                        {/*<Button color={btnColor} size="medium" type="submit" variant="contained"*/}
-                        {/*        sx={{ml: 3, mt: -13}}>*/}
-                        {/*    {btnLabel}*/}
-                        {/*</Button>*/}
-
-                        {/*<Button onClick={clearFields} type="reset" variant="contained" color="success"*/}
-                        {/*        sx={{ml: 3, mt: -13}}>*/}
-                        {/*    Reset*/}
-                        {/*</Button>*/}
+                        <Button onClick={clearFields} type="reset" variant="contained" color="success"
+                                sx={{ml: 3, mt: -13}}>
+                            Reset
+                        </Button>
                     </div>
-                    {/*cartable open*/}
+
                     <Box sx={{width: '100%'}}>
                         <Paper sx={{width: '100%', mb: 2}}>
                             <EnhancedTableToolbar numSelected={selected.length}/>
@@ -617,7 +414,7 @@ const ManageCustomer = ({}) => {
                                         {stableSort(rows, getComparator(order, orderBy))
                                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                             .map((row, index) => {
-                                                const isItemSelected = isSelected(row.rentId);
+                                                const isItemSelected = isSelected(row.email);
                                                 const labelId = `enhanced-table-checkbox-${index}`;
 
                                                 return (
@@ -625,7 +422,7 @@ const ManageCustomer = ({}) => {
                                                         hover
                                                         aria-checked={isItemSelected}
                                                         tabIndex={-1}
-                                                        key={row.rentId}
+                                                        key={row.email}
                                                         selected={isItemSelected}
                                                     >
                                                         <TableCell>
@@ -636,78 +433,57 @@ const ManageCustomer = ({}) => {
                                                             scope="row"
                                                             padding="none"
                                                         >
-                                                            {row.rentId}
+                                                            {row.email}
                                                         </TableCell>
                                                         <TableCell component="th"
                                                                    id={labelId}
                                                                    scope="row"
-                                                                   padding="none">{row.pickUpDate}</TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.type}</TableCell>
-                                                        <TableCell>{row.pickUpTime}</TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.returnDate}
-                                                        </TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.returnTime}
-                                                        </TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.slipFile}
-                                                        </TableCell>
-                                                        <TableCell component="th"
-                                                                   id={labelId}
-                                                                   scope="row"
-                                                                   padding="none">{row.carType}
+                                                                   padding="none">{row.password}
                                                         </TableCell>
                                                         <TableCell component="th"
                                                                    id={labelId}
                                                                    scope="row"
                                                                    padding="none">{row.nicNo}
                                                         </TableCell>
-
                                                         <TableCell component="th"
                                                                    id={labelId}
                                                                    scope="row"
-                                                                   padding="none">{row.isDriver}
+                                                                   padding="none">{row.nicImg}
                                                         </TableCell>
-                                                        {/*<TableCell component="th"*/}
-                                                        {/*           id={labelId}*/}
-                                                        {/*           scope="row"*/}
-                                                        {/*           padding="none">{row.update}*/}
-                                                        {/*    <IconButton onClick={() => {*/}
-                                                        {/*        updateCustomer(row);*/}
-                                                        {/*    }} color="info" aria-label="update" component="label">*/}
-                                                        {/*        <CreateIcon/>*/}
-                                                        {/*    </IconButton>*/}
-
-                                                        {/*</TableCell>*/}
                                                         <TableCell component="th"
                                                                    id={labelId}
                                                                    scope="row"
-                                                                   padding="none">{row.delete}
-
-                                                            <IconButton onClick={() => deleteCustomer(row.rentId)}
-                                                                        color="error" aria-label="delete"
-                                                                        component="label">
-                                                                <DeleteIcon/>
-                                                            </IconButton>
+                                                                   padding="none">{row.licenceNo}
+                                                        </TableCell>
+                                                        <TableCell component="th"
+                                                                   id={labelId}
+                                                                   scope="row"
+                                                                   padding="none">{row.licenceImg}
+                                                        </TableCell>
+                                                        <TableCell component="th"
+                                                                   id={labelId}
+                                                                   scope="row"
+                                                                   padding="none">{row.address}
+                                                        </TableCell>
+                                                        <TableCell component="th"
+                                                                   id={labelId}
+                                                                   scope="row"
+                                                                   padding="none">{row.contactNo}
                                                         </TableCell>
 
+
                                                         <TableCell component="th"
                                                                    id={labelId}
                                                                    scope="row"
-                                                                   padding="none">{row.maintain}
-                                                            <IconButton color="secondary" aria-label="maintain"
+                                                                   padding="none"
+                                                        >
+
+                                                            <IconButton onClick={() => {
+                                                                acceptRequest(row.isAccept, row.nicNo)
+                                                            }}
+                                                                        color="success" aria-label="delete"
                                                                         component="label">
-                                                                <ConstructionIcon/>
+                                                                <CheckCircleOutlineIcon/>
                                                             </IconButton>
                                                         </TableCell>
                                                     </TableRow>
@@ -736,10 +512,7 @@ const ManageCustomer = ({}) => {
                             />
                         </Paper>
                     </Box>
-                    {/*cartable close*/}
-
                 </div>
-
             </Box>
         </div>
     )
