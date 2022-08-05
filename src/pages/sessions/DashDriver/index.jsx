@@ -9,9 +9,13 @@ import {PhotoCamera} from "@mui/icons-material";
 import IconButton from "@material-ui/core/IconButton";
 import HomeDashNav from "../Home/homeDashNav";
 import DriverDashNav from "../ViewDriverDetails/driverDashNav";
+import {LocalizationProvider, StaticDatePicker} from "@mui/x-date-pickers";
+import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
+import TextField from "@material-ui/core/TextField";
 
 
-
+const driver = new URL("../../../assets/driver.png",import.meta.url)
+const car9 = new URL("../../../assets/car9.png",import.meta.url)
 const cus = new URL("../../../assets/cus.png",import.meta.url)
 class DashDriver extends Component {
     constructor(props) {
@@ -35,12 +39,28 @@ class DashDriver extends Component {
 
 
                 <Grid>
-                    <img src={cus} style={{position:"absolute", top:200, left:670,width:100,height:100}}/>
+                    <img src={car9} style={{ position:"absolute",top:8, left:200,height:30,width:30}}/>
+                    <img src={driver} style={{position:"absolute", top:70, left:800,width:100,height:100}}/>
                 </Grid>
 
 
 
 
+                <LocalizationProvider style={{position:"absolute",top:400}} dateAdapter={AdapterDateFns}>
+                    <StaticDatePicker
+                        displayStaticWrapperAs="desktop"
+                        openTo="year"
+                        value={this.value}
+                        onChange={(newValue) => {
+                            function setValue(newValue) {
+
+                            }
+
+                            setValue(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                    />
+                </LocalizationProvider>
 
 
 

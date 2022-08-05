@@ -19,7 +19,7 @@ export default function AdminDashNav() {
                     </Typography>
 
 
-                    <Link href="customer" underline="none">
+                    <Link href="customerManage" underline="none">
                         <Button  color='primary' variant="contained">Manage Customer</Button>
                     </Link>
 

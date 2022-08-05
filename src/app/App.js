@@ -25,6 +25,7 @@ import ViewDriverDetails from "../pages/sessions/ViewDriverDetails";
 import DashDriver from "../pages/sessions/DashDriver";
 import ViewSchedule from "../pages/sessions/ViewDriverDetails";
 import ManageCustomer from "../pages/sessions/ManageCustomer";
+import DailySummary from "../pages/sessions/DailySummary";
 
 
 
@@ -51,6 +52,7 @@ function App() {
             <Route path="dashdriver" element={<DashDriver/>}/>
             <Route path="viewSchedule" element={<ViewDriverDetails/>}/>
             <Route path="customerManage" element={<ManageCustomer/>}/>
+            <Route path="summary" element={<DailySummary/>}/>
         </Routes>
         </BrowserRouter>
     );

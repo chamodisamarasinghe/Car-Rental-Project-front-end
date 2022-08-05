@@ -14,7 +14,7 @@ export default function CustomerDashNav() {
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1,fontWeight:"bold" }}>
                         Easy Car Rental
                     </Typography>
 
