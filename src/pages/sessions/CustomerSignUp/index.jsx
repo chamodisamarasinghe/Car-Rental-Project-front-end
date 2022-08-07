@@ -239,9 +239,11 @@ const SignUp = () => {
 
                         <Grid item>
                             <TextField label='Driving License Photo' placeholder='Upload Driving License Photo'
-                                       name="licenceImg"
-                                       onChange={handleInputChange}
-                                       value={formValues.licenceImg}/>
+                                        name="licenceImg"
+                                        onChange={handleInputChange}
+                                        value={formValues.licenceImg}
+
+                            />
                         </Grid>
                         <Grid item sx={{ml:15}}>
                             <TextField label='Contact Number' placeholder='Enter Contact Number'
